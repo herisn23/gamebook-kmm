@@ -8,6 +8,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import cast
 import kotlin.reflect.KProperty
 import kotlin.reflect.KProperty1
 
@@ -112,6 +113,9 @@ class RouteBuilder<T : RoutePathVars> {
 
 }
 
-operator fun <T> NavBackStackEntry?.getValue(thisRef: Any?, property: KProperty<*>): T {
-    return this?.arguments?.get(property.name) as T
+inline operator fun <reified T> NavBackStackEntry?.getValue(
+    thisRef: Any?,
+    property: KProperty<*>
+): T {
+    return this?.arguments?.get(property.name).cast()
 }

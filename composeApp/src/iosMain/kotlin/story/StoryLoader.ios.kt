@@ -13,14 +13,14 @@ actual suspend fun loadStoryApi(path: String, fileName: String): String =
     "${storyContext(path)}/${fileName}".read()
 
 actual suspend fun loadStoryLocalization(path: String, strings: String): Map<String, String> =
-    "${storyContext(path)}/${strings}".let { path ->
+    "${storyContext(path)}/${strings}".let { path1 ->
         NSFileManager
             .defaultManager()
-            .directoryContentsAtPath(path)
+            .directoryContentsAtPath(path1)
             ?.fastMap {
                 val fileName = "$it"
                 val lang = fileName.replace(".yaml", "")
-                lang to "$path/$it".read()
+                lang to "$path1/$it".read()
             }
             ?.toMap() ?: emptyMap()
     }

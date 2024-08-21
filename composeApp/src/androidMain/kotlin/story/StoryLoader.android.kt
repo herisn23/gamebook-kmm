@@ -6,9 +6,9 @@ actual suspend fun loadStoryApi(path: String, fileName: String): String =
     "${storyContext(path)}/${fileName}".read()
 
 actual suspend fun loadStoryLocalization(path: String, strings: String): Map<String, String> =
-    "${storyContext(path)}/$strings".let { path ->
-        val cs = MainActivity::class.java.classLoader?.getResource("$path/cs.yaml")?.readText()!!
-        val en = MainActivity::class.java.classLoader?.getResource("$path/en.yaml")?.readText()!!
+    "${storyContext(path)}/$strings".let { path1 ->
+        val cs = MainActivity::class.java.classLoader?.getResource("$path1/cs.yaml")?.readText()!!
+        val en = MainActivity::class.java.classLoader?.getResource("$path1/en.yaml")?.readText()!!
         mapOf(
             "cs" to cs,
             "en" to en
