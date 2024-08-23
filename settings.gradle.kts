@@ -26,6 +26,22 @@ dependencyResolutionManagement {
         }
         mavenCentral()
     }
+    versionCatalogs {
+        create("mn") {
+            from("io.micronaut.platform:micronaut-platform:4.5.0")
+        }
+        create("sl") {
+            from(files("./gradle/server-libs.versions.toml"))
+        }
+    }
 }
 
 include(":composeApp")
+include(":shared")
+
+include(":server")
+include(":server:flyway")
+include(":server:micronaut")
+include(":server:micronaut:boot")
+include(":server:micronaut:app")
+include(":server:micronaut:app:web")

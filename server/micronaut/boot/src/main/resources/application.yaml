@@ -1,0 +1,37 @@
+#Tue Mar 12 14:59:56 UTC 2024
+micronaut:
+  environments: router
+  application:
+    name: gamebook
+  security:
+    enabled: false
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:static
+        mapping: /swagger/**
+      swagger-ui:
+        paths: classpath:META-INF/swagger/views/swagger-ui
+        mapping: /swagger-ui/**
+  server:
+    max-request-size: '1GB'
+    multipart:
+      max-file-size: ${micronaut.server.max-request-size}
+      disk: true
+      mixed: true
+    locale-resolution:
+      default-locale: cs
+  serde:
+    serialization:
+      inclusion: non_null
+
+flyway:
+  datasources:
+    default:
+      enabled: false
+
+endpoints:
+  all:
+    sensitive: false
+  health:
+    details-visible: anonymous

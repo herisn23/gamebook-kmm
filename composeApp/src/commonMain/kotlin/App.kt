@@ -1,3 +1,4 @@
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -18,7 +19,9 @@ fun App() {
         colorScheme = darkColorScheme()
     ) {
         Surface(modifier = Modifier.fillMaxSize()) {
-            MainRouting()
+            Column {
+                MainRouting()
+            }
         }
     }
 }

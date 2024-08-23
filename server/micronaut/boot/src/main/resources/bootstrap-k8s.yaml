@@ -1,0 +1,29 @@
+micronaut:
+  config-client:
+    enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+        descriptions: true
+        step: PT15S
+    enabled: true
+
+kubernetes:
+  client:
+    config-maps:
+      enabled: true
+      use-api: false
+      watch: true
+      paths:
+        - /run/config/app
+    secrets:
+      enabled: true
+      use-api: false
+      watch: true
+      paths:
+        - /run/secrets/app
+        - /app/redis
+    discovery:
+      mode: service
+      enabled: false

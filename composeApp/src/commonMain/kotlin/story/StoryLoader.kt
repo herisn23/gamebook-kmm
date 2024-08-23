@@ -1,50 +1,48 @@
 package story
 
-import com.charleskorn.kaml.PolymorphismStyle
+import async.mapAsync
 import com.charleskorn.kaml.Yaml
-import com.charleskorn.kaml.YamlConfiguration
 import com.charleskorn.kaml.YamlNode
 import com.charleskorn.kaml.yamlMap
 import com.charleskorn.kaml.yamlScalar
+import cz.roldy.gb.story.model.Story
+import cz.roldy.gb.story.model.StoryApi
+import cz.roldy.gb.story.model.StoryLocalization
+import cz.roldy.gb.story.model.StoryMetadata
+import http.storyApiClient
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
-import story.model.Story
-import story.model.StoryApi
-import story.model.StoryLocalization
-import story.model.StoryMetadata
-
-
-expect suspend fun loadStoryApi(path: String, fileName:String): String
-expect suspend fun loadStoryLocalization(path: String, strings:String): Map<String, String>
-expect suspend fun loadStoriesApi(fileName:String): String
 
 suspend fun loadStories(): List<StoryMetadata> =
-    loadStoriesApi("stories.yaml").let {
+    storyApiClient.stories().source.let {
         Yaml.default.parseToYamlNode(it).storyMetadata
     }
-
-private val StoryMetadata.path get() = "story/$id"
 
 suspend fun loadStory(metadata: StoryMetadata): Story = coroutineScope {
     awaitAll(
         async {
-            loadStoryApi(metadata.path, "api.yaml").let {
-                Yaml(
-                    configuration = YamlConfiguration(
-                        polymorphismStyle = PolymorphismStyle.Tag
-                    )
-                ).decodeFromString(StoryApi.serializer(), it)
-            }
+            Yaml().decodeFromString(StoryApi.serializer(), storyApiClient.api(metadata.id).source)
         },
         async {
-            loadStoryLocalization(metadata.path, "strings").map { (lang, content) ->
+            val collected = mutableListOf<Pair<String, Map<String, String>>>()
+            awaitAll(
+                *collected.toList().map { lang ->
+                    async {
+
+                    }
+                }.toTypedArray()
+            )
+            storyApiClient.localizations(metadata.id).mapAsync { lang ->
+                lang to storyApiClient.localizations(metadata.id, lang).source
+            }.associate { (lang, content) ->
                 lang to Yaml.default.parseToYamlNode(content)
                     .yamlMap.entries
                     .map { (messageKey, localization) ->
                         messageKey.content to localization.yamlScalar.content
                     }.toMap()
-            }.toMap().run {
+
+            }.run {
                 //move message key to top-level and langs underneath
 
                 /**

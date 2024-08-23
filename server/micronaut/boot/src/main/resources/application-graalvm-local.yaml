@@ -1,0 +1,72 @@
+redis:
+  uri: redis://host.docker.internal:6379
+  graalvm:
+    caches:
+      redim:
+        expire-after-write: 8h
+        key-serializer: io.micronaut.cache.serialize.DefaultStringKeySerializer
+        value-serializer: io.micronaut.jackson.serialize.JacksonObjectSerializer
+        charset: UTF-8
+      discovery-client:
+        expire-after-access: 30s
+        key-serializer: io.micronaut.cache.serialize.DefaultStringKeySerializer
+        value-serializer: io.micronaut.jackson.serialize.JacksonObjectSerializer
+        charset: UTF-8
+    reconnect-delay: 100ms
+
+r2dbc:
+  datasources:
+    default:
+      url: r2dbc:postgresql://host.docker.internal:5432/webforms?schema=webforms
+      password: app
+      username: app
+      driver: pool
+      protocol: postgres
+
+logger:
+  levels:
+#    io.r2dbc.postgresql.QUERY: DEBUG # for queries
+#    io.r2dbc.postgresql.PARAM: DEBUG # for parameters
+#    io.micronaut.data.query: TRACE
+#    root: DEBUG
+#    io.micronaut.http.client: TRACE #debugging
+#    io.micronaut.http.server: TRACE #debugging
+
+micronaut:
+  http:
+    services:
+      mila:
+        url: https://uat2-webapi-mila.vs.csin.cz
+
+javamail:
+  properties:
+    mail.transport.protocol: smtp
+    mail.smtp.host: localhost
+    mail.smtp.port: 25
+
+kafka:
+  ssl:
+    keystore:
+      location: ${KAFKA_CERT_LOCATION}
+      password: ${KAFKA_PASSWORD}
+  bootstrap:
+    servers:
+      - https://dpkafda11.vs.csin.cz:9095
+      - https://dpkafda12.vs.csin.cz:9095
+  producers:
+    default:
+      schema.registry.url: https://deva-mw-kafka.vs.csin.cz:9082
+
+csas:
+  attachments:
+    context-path: dev-attachments-upload
+  mila-api-key: d28f1707-c75b-44bf-8f1a-a4632857276f
+  security:
+    app-roles:
+      admin: WEBFORMS_SUPERADMIN
+    user-roles: # default roles per user, this is usable for testing when redim library is not on classpath or mila.url is not configured
+      user123: # specific user
+        - WEBFORMS_SUPERADMIN
+      '*': # all users
+        - UNKNOWN
+fileContextUrl: http://localhost:8080

@@ -11,9 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
+import cz.roldy.gb.story.model.StoryMetadata
 import routing.RouteBuilder
 import routing.RoutePathVars
-import story.model.StoryMetadata
+import story.desc
+import story.name
 
 interface StoryPickVars : RoutePathVars {
     val id: String
@@ -39,8 +41,7 @@ fun StoryPickScreen(
         Column {
             Text(
                 text = storyMetadata.name,
-                modifier = Modifier
-                    .padding(16.dp),
+                modifier = Modifier.padding(16.dp),
                 textAlign = TextAlign.Center
             )
             Text(storyMetadata.desc)

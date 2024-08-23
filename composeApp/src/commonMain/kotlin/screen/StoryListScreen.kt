@@ -13,9 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import cz.roldy.gb.story.model.StoryMetadata
 import routing.NoPathVars
 import routing.RouteBuilder
-import story.model.StoryMetadata
+import story.name
 
 
 val StoriesRoute by lazy {

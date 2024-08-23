@@ -1,0 +1,16 @@
+redis:
+  caches:
+    redim:
+      expire-after-write: 8h
+      key-serializer: io.micronaut.cache.serialize.DefaultStringKeySerializer
+      value-serializer: io.micronaut.jackson.serialize.JacksonObjectSerializer
+      charset: UTF-8
+    discovery-client:
+      expire-after-access: 30s
+      key-serializer: io.micronaut.cache.serialize.DefaultStringKeySerializer
+      value-serializer: io.micronaut.jackson.serialize.JacksonObjectSerializer
+      charset: UTF-8
+  reconnect-delay: 100ms
+
+logback:
+  configurationFile: logback-k8s.xml

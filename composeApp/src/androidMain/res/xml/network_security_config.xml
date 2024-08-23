@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!--    <domain-config cleartextTrafficPermitted="true">-->
+    <!--&lt;!&ndash;        <domain includeSubdomains="true">api.example.com(to be adjusted)</domain>&ndash;&gt;-->
+    <!--    </domain-config>-->
+</network-security-config>

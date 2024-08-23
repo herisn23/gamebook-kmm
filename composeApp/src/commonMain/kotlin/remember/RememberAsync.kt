@@ -5,16 +5,11 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.node.Ref
+import async.ExecutionScope
 import async.onBackground
 import async.onMain
 import async.onView
 import io.github.aakira.napier.Napier
-
-typealias ExecutionScope<T> = (
-    task: suspend () -> T,
-    onSuccess: suspend (T) -> Unit,
-    onFailure: (Throwable) -> Unit
-) -> Unit
 
 
 /**

@@ -8,17 +8,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.intl.Locale
 import androidx.navigation.NavType
 import com.mikepenz.markdown.m3.Markdown
-import engine.localization.Genus
+import cz.roldy.gb.story.localization.Genus
+import cz.roldy.gb.story.localization.invoke
+import cz.roldy.gb.story.model.StoryMetadata
 import engine.StoryEngine
-import engine.localization.invoke
 import remember.lazyRemember
 import routing.LocalMainNav
 import routing.RouteBuilder
 import routing.RoutePathVars
 import story.loadStory
-import story.model.StoryMetadata
 import view.LoaderView
 import view.invoke
 
@@ -46,13 +47,17 @@ fun StoryScreen(metadata: StoryMetadata) {
         }
     }) {
         Column {
-            val engine = StoryEngine(story!!, Genus.Masculine.takeIf { selected } ?: Genus.Feminine)
+            val engine =
+                StoryEngine(story!!, Genus.Masculine.takeIf { selected } ?: Genus.Feminine) {
+                    Locale.current.language
+                }
             Text(engine.t { text() })
             val a = engine.t {
                 compositeText { selector ->
                     "ABC"
                 }
             }
+//            Image(i { main_background }, "desc")
             Markdown(a)
             Button({
                 selected = !selected

@@ -1,5 +1,5 @@
 [versions]
-agp = "8.2.2"
+agp = "8.2.0"
 android-compileSdk = "35"
 android-minSdk = "34"
 android-targetSdk = "35"
@@ -12,7 +12,7 @@ androidx-material = "1.12.0"
 androidx-test-junit = "1.2.1"
 compose-plugin = "1.6.11"
 junit = "4.13.2"
-kotlin = "2.0.0"
+kotlin = "2.0.20"
 aakira-napier = "2.7.1"
 kotlinx-serialization-json = "1.7.1"
 kotlin-serialization = "2.0.0"
@@ -21,7 +21,11 @@ jetbrains-navigation = "2.7.0-alpha07"
 kmm-resources = "1.0.0-alpha10"
 moko-resources = "0.24.1"
 jetbrains-markdown = "0.7.3"
-markdown-renderer="0.25.0"
+markdown-renderer = "0.25.0"
+ktor = "2.3.12"
+buildKonfig = "0.15.1"
+#server versions
+
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -42,9 +46,20 @@ jetbrains-navigation = { module = "org.jetbrains.androidx.navigation:navigation-
 moko-resources = { module = "dev.icerock.moko:resources", version.ref = "moko-resources" }
 moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-resources" }
 jetbrains-markdown = { module = "org.jetbrains:markdown", version.ref = "jetbrains-markdown" }
-markdown-renderer = {module="com.mikepenz:multiplatform-markdown-renderer-m3", version.ref="markdown-renderer"}
+markdown-renderer = { module = "com.mikepenz:multiplatform-markdown-renderer-m3", version.ref = "markdown-renderer" }
+
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-ios = { module = "io.ktor:ktor-client-ios", version.ref = "ktor" }
+ktor-plugins-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-plugins-resources = { module = "io.ktor:ktor-client-resources", version.ref = "ktor" }
+ktor-plugins-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-plugins-negotiation-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-plugins-headers = { module = "io.ktor:ktor-server-default-headers" }
+#server libraries
 
 [plugins]
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
@@ -52,3 +67,5 @@ jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-serialization" }
+buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
+#server plugins

@@ -1,0 +1,26 @@
+story-name: Zombie apokalypsa
+shit: hovno
+enemy-name-1: ZombÍk
+enemy-name-2: ZOMBÍK 2
+composite-text: |
+  Je to zlé, {lit(genus):lower:inflection-text}.
+  Ivy {lt:lower:is-dead-f}.
+  Všichni {lt:lower:is-dead-plural-m}.
+  [Srdce](https://bing.com) ti buší **jako** o závod a má puls __{arg:lower:pulse}__.
+  Před tebou stojí {lt:decap:enemy-name-1} a za tebou je {lt:lower:cap:enemy-name-2}
+
+
+inflection-text-f: Byla jsi unesena
+inflection-text-m: Byl jsi unesen
+inflection-text-n: Bylo jsi uneseno
+
+is-dead-f: Je mrtvá
+is-dead-m: Je mrtví
+is-dead-n: Je mrtvý
+is-dead-plural-f: Jsou mrtvé
+is-dead-plural-m: Jsou mrtví
+is-dead-plural-n: Jsou mrtvý
+
+selective-text-a: Option a
+selective-text-b: Option b
+
