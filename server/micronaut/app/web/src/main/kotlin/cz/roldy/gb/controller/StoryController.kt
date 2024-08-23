@@ -21,12 +21,15 @@ class StoryController(
 
     @Get
     fun stories(): Mono<YamlSource> =
-        getResource("stories.yaml").readContent().map(::YamlSource)
+        getResource("stories.yaml").readContent().toYamlSource()
 
     @Get("/{id}")
     fun story(@PathVariable id: String): Mono<YamlSource> =
-        getResource("${id}/api.yaml").readContent().map(::YamlSource)
+        getResource("${id}/api.yaml").readContent().toYamlSource()
 
+    @Get("/image/{id}", produces = ["image/png"])
+    fun image(@PathVariable id: String) =
+        getResource("${id}/image.png").readContent()
 
     @Get("/{id}/localization")
     fun localizations(@PathVariable id: String): Flux<String> =
@@ -36,7 +39,7 @@ class StoryController(
 
     @Get("/{id}/localization/{lang}")
     fun localization(@PathVariable id: String, @PathVariable lang: String): Mono<YamlSource> =
-        getResource("$id/strings/$lang.yaml").readContent().map(::YamlSource)
+        getResource("$id/strings/$lang.yaml").readContent().toYamlSource()
 
 
     private fun getResource(path: String): Mono<URL> =
@@ -56,7 +59,12 @@ class StoryController(
 
     private fun Mono<URL>.readContent() =
         map {
-            it.readText()
+            it.readBytes()
+        }
+
+    private fun Mono<ByteArray>.toYamlSource() =
+        map {
+            YamlSource(String(it))
         }
 }
 

@@ -3,7 +3,9 @@ package http
 import cz.roldy.gb.story.model.YamlSource
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
+import io.ktor.client.request.accept
 import io.ktor.client.request.get
+import io.ktor.http.ContentType
 
 
 class StoryApiClient(private val client: HttpClient) : HttpApiClient {
@@ -18,6 +20,11 @@ class StoryApiClient(private val client: HttpClient) : HttpApiClient {
 
     suspend fun api(id: String): YamlSource =
         client.get("/story/$id").body()
+
+    suspend fun image(id: String): ByteArray? =
+        client.get("/story/image/$id") {
+            accept(ContentType.Image.PNG)
+        }.body()
 }
 
 val storyApiClient: StoryApiClient = StoryApiClient(defaultClient)

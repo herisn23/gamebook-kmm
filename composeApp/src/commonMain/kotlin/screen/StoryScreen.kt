@@ -57,7 +57,7 @@ fun StoryScreen(metadata: StoryMetadata) {
                     "ABC"
                 }
             }
-//            Image(i { main_background }, "desc")
+
             Markdown(a)
             Button({
                 selected = !selected

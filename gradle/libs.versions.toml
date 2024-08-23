@@ -1,5 +1,5 @@
 [versions]
-agp = "8.2.0"
+agp = "8.2.2"
 android-compileSdk = "35"
 android-minSdk = "34"
 android-targetSdk = "35"
@@ -24,6 +24,7 @@ jetbrains-markdown = "0.7.3"
 markdown-renderer = "0.25.0"
 ktor = "2.3.12"
 buildKonfig = "0.15.1"
+uiGraphicsDesktop = "1.6.8"
 #server versions
 
 
@@ -47,7 +48,6 @@ moko-resources = { module = "dev.icerock.moko:resources", version.ref = "moko-re
 moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-resources" }
 jetbrains-markdown = { module = "org.jetbrains:markdown", version.ref = "jetbrains-markdown" }
 markdown-renderer = { module = "com.mikepenz:multiplatform-markdown-renderer-m3", version.ref = "markdown-renderer" }
-
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-client-ios = { module = "io.ktor:ktor-client-ios", version.ref = "ktor" }
@@ -56,6 +56,7 @@ ktor-plugins-resources = { module = "io.ktor:ktor-client-resources", version.ref
 ktor-plugins-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-plugins-negotiation-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-plugins-headers = { module = "io.ktor:ktor-server-default-headers" }
+androidx-ui-graphics-desktop = { group = "androidx.compose.ui", name = "ui-graphics-desktop", version.ref = "uiGraphicsDesktop" }
 #server libraries
 
 [plugins]
