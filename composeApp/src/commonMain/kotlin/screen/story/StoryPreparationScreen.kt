@@ -1,8 +1,8 @@
 package screen.story
 
 import DefaultPadding
-import HeaderSize
 import ScreenPadding
+import StoryTileSize
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -26,8 +27,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ImageBitmap
 import cardDefaultColors
-import component.MainButton
 import component.StoryTitle
 import cz.roldy.gb.story.model.Story
 import cz.roldy.gb.story.model.StoryMetadata
@@ -38,7 +39,7 @@ import story.loadStory
 import story.startGameText
 import view.LoaderView
 
-data object StoryPreparation : Screen<StoryMetadata>
+data object StoryPreparation : Screen<Pair<StoryMetadata, ImageBitmap>>
 
 @Composable
 fun StoryStartView(metadata: StoryMetadata, onStart: (Story) -> Unit) {
@@ -50,7 +51,7 @@ fun StoryStartView(metadata: StoryMetadata, onStart: (Story) -> Unit) {
         modifier = Modifier.fillMaxSize()
     ) { story ->
         Text("available start positions in story")
-        MainButton({
+        Button({
             onStart(story!!)
         }) {
             Text("Pick")
@@ -66,7 +67,7 @@ fun StoryDescriptionView(metadata: StoryMetadata, onNex: () -> Unit) {
                 Text(metadata.desc)
             }
         }
-        MainButton(
+        Button(
             onNex,
             Modifier.align(Alignment.CenterHorizontally).padding(DefaultPadding)
         ) {
@@ -79,6 +80,7 @@ fun StoryDescriptionView(metadata: StoryMetadata, onNex: () -> Unit) {
 @Composable
 fun StoryPreparationView(
     metadata: StoryMetadata,
+    image: ImageBitmap,
     onBack: () -> Unit,
     onStart: (Story) -> Unit
 ) {
@@ -86,8 +88,8 @@ fun StoryPreparationView(
         Card(
             colors = cardDefaultColors
         ) {
-            Box(Modifier.height(HeaderSize)) {
-                StoryTitle(metadata) {
+            Box(Modifier.height(StoryTileSize)) {
+                StoryTitle(metadata, image) {
                     IconButton(onBack, Modifier.align(Alignment.TopEnd)) {
                         Icon(
                             imageVector = Icons.Default.Close,

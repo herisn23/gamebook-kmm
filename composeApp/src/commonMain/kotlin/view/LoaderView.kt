@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,7 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
-import component.MainButton
 import io.ktor.utils.io.errors.IOException
 import mrs
 import remember.lazyRemember
@@ -106,7 +106,7 @@ fun <T> LoaderView(
                                         .align(Alignment.CenterHorizontally),
                                     textAlign = TextAlign.Center
                                 )
-                                MainButton(
+                                Button(
                                     {
                                         error = null
                                         (onError ?: data.reload)()

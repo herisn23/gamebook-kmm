@@ -1,8 +1,12 @@
 package screen.story
 
 import DefaultPadding
-import HeaderSize
+import ScreenPadding
+import StoryTileSize
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -10,18 +14,27 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.node.Ref
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
 import component.StoryTitle
 import cz.roldy.gb.story.model.StoryMetadata
+import defaultBackgroundColor
+import defaultColors
+import mri
 import mrs
 import screen.Screen
 import screen.ScreenTransition
 import story.loadStories
+import titleFont
 import view.LoaderView
 
 data object StoriesScreen : Screen<Any?> {
@@ -32,38 +45,56 @@ data object StoriesScreen : Screen<Any?> {
 @Composable
 fun StoriesScreen(
     transition: ScreenTransition,
-    onStoryPick: (LayoutCoordinates?, StoryMetadata) -> Unit
+    onStoryPick: (LayoutCoordinates?, StoryMetadata, ImageBitmap) -> Unit
 ) {
-    LoaderView(
-        emptyList(),
-        { isNotEmpty() },
-        { loadStories() },
-        errorButtonText = mrs { error_retry },
-        contentTransition = transition,
-        errorTransition = transition,
-        loadingTransition = transition
-    )
-    { stories ->
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(DefaultPadding),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(DefaultPadding)
-        ) {
-            items(stories) { story ->
-                val pos = remember { Ref<LayoutCoordinates>() }
-                Card(
-                    onClick = {
-                        onStoryPick(pos.value, story)
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(HeaderSize)
-                        .onGloballyPositioned {
-                            pos.value = it
-                        }
-                ) {
-                    StoryTitle(story)
+
+    Column {
+        Box(Modifier.background(defaultBackgroundColor.copy(.2f))) {
+            Text(
+                mrs { stories },
+                color = defaultColors.onPrimary,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.Center)
+                    .padding(DefaultPadding),
+                textAlign = TextAlign.Center,
+                fontSize = 25.sp,
+                fontFamily = titleFont
+            )
+        }
+        LoaderView(
+            emptyList(),
+            { isNotEmpty() },
+            { loadStories() },
+            errorButtonText = mrs { error_retry },
+            contentTransition = transition,
+            errorTransition = transition,
+            loadingTransition = transition
+        )
+        { stories ->
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(DefaultPadding),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = ScreenPadding)
+            ) {
+                items(stories) { story ->
+                    val image = remember { Ref<ImageBitmap>() }
+                    val defaultImage = mri { story_default }
+                    val pos = remember { Ref<LayoutCoordinates>() }
+                    Card(
+                        onClick = {
+                            onStoryPick(pos.value, story, image.value ?: defaultImage)
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(StoryTileSize)
+                            .onGloballyPositioned {
+                                pos.value = it
+                            }
+                    ) {
+                        StoryTitle(story, onImageLoaded = { image.value = it })
+                    }
                 }
             }
         }
