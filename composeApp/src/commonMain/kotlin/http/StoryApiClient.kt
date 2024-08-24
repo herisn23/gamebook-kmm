@@ -1,11 +1,14 @@
 package http
 
+import cache.cache
 import cz.roldy.gb.story.model.YamlSource
+import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.accept
 import io.ktor.client.request.get
 import io.ktor.http.ContentType
+import io.ktor.http.HttpStatusCode
 
 
 class StoryApiClient(private val client: HttpClient) : HttpApiClient {
@@ -24,7 +27,12 @@ class StoryApiClient(private val client: HttpClient) : HttpApiClient {
     suspend fun image(id: String): ByteArray? =
         client.get("/story/image/$id") {
             accept(ContentType.Image.PNG)
-        }.body()
+        }.body(HttpStatusCode.OK)
 }
 
-val storyApiClient: StoryApiClient = StoryApiClient(defaultClient)
+val sac: StoryApiClient = StoryApiClient(defaultClient)
+
+suspend fun StoryApiClient.cachedImage(id: String, force: Boolean = false): ByteArray? =
+    cache("image-story-$id", force = force) {
+        image(id)
+    }

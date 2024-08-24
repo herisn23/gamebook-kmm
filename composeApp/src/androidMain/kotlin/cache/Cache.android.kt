@@ -9,8 +9,11 @@ import kotlin.io.path.writeBytes
 actual suspend fun exist(fileName: String): Boolean =
     cacheDir().resolve(Path.of(fileName)).exists()
 
-actual suspend fun save(fileName: String, bytes: ByteArray): ByteArray? =
-    cacheDir().resolve(Path.of(fileName)).writeBytes(bytes).let { bytes }
+actual suspend fun save(fileName: String, bytes: ByteArray?): ByteArray? =
+    bytes?.let {
+        cacheDir().resolve(Path.of(fileName)).writeBytes(bytes).let { bytes }
+    }
+
 
 actual suspend fun load(fileName: String): ByteArray? =
     cacheDir().resolve(Path.of(fileName)).readBytes()

@@ -9,20 +9,20 @@ import cz.roldy.gb.story.model.Story
 import cz.roldy.gb.story.model.StoryApi
 import cz.roldy.gb.story.model.StoryLocalization
 import cz.roldy.gb.story.model.StoryMetadata
-import http.storyApiClient
+import http.sac
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 
 suspend fun loadStories(): List<StoryMetadata> =
-    storyApiClient.stories().source.let {
+    sac.stories().source.let {
         Yaml.default.parseToYamlNode(it).storyMetadata
     }
 
 suspend fun loadStory(metadata: StoryMetadata): Story = coroutineScope {
     awaitAll(
         async {
-            Yaml().decodeFromString(StoryApi.serializer(), storyApiClient.api(metadata.id).source)
+            Yaml().decodeFromString(StoryApi.serializer(), sac.api(metadata.id).source)
         },
         async {
             val collected = mutableListOf<Pair<String, Map<String, String>>>()
@@ -33,8 +33,8 @@ suspend fun loadStory(metadata: StoryMetadata): Story = coroutineScope {
                     }
                 }.toTypedArray()
             )
-            storyApiClient.localizations(metadata.id).mapAsync { lang ->
-                lang to storyApiClient.localizations(metadata.id, lang).source
+            sac.localizations(metadata.id).mapAsync { lang ->
+                lang to sac.localizations(metadata.id, lang).source
             }.associate { (lang, content) ->
                 lang to Yaml.default.parseToYamlNode(content)
                     .yamlMap.entries

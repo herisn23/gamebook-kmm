@@ -19,27 +19,29 @@ class StoryController(
     private val resourceResolver: ResourceResolver
 ) {
 
+    val test = "zombie_apocalypse"
+
     @Get
     fun stories(): Mono<YamlSource> =
         getResource("stories.yaml").readContent().toYamlSource()
 
     @Get("/{id}")
     fun story(@PathVariable id: String): Mono<YamlSource> =
-        getResource("${id}/api.yaml").readContent().toYamlSource()
+        getResource("$test/api.yaml").readContent().toYamlSource()
 
     @Get("/image/{id}", produces = ["image/png"])
     fun image(@PathVariable id: String) =
-        getResource("${id}/image.png").readContent()
+        getResource("$test/image.png").readContent()
 
     @Get("/{id}/localization")
     fun localizations(@PathVariable id: String): Flux<String> =
-        getResourceEntries("$id/strings").map {
+        getResourceEntries("$test/strings").map {
             it.name.replace(".yaml", "")
         }
 
     @Get("/{id}/localization/{lang}")
     fun localization(@PathVariable id: String, @PathVariable lang: String): Mono<YamlSource> =
-        getResource("$id/strings/$lang.yaml").readContent().toYamlSource()
+        getResource("$test/strings/$lang.yaml").readContent().toYamlSource()
 
 
     private fun getResource(path: String): Mono<URL> =

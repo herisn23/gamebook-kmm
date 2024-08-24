@@ -5,6 +5,12 @@ inline fun <reified T> Any?.cast(): T {
     return this as T
 }
 
+interface Platform {
+    val name: String
+    val version:String
+}
 
-expect val ByteArray.bitmap: ImageBitmap
+expect val platform: Platform
+
+expect val ByteArray.bitmap: ImageBitmap?
 

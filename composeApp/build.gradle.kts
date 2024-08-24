@@ -120,7 +120,6 @@ buildkonfig {
     packageName = "cz.roldy.gb.config"
 
     val apiUrlPropertyName = "API_URL"
-    val platformProperty = "PLATFORM"
     val httpLoggingEnabled = "HTTP_LOGGING_ENABLED"
 
     val apiUrlAndroidSimDev: String by project
@@ -129,22 +128,9 @@ buildkonfig {
     val apiUrlStage: String by project
     val apiUrlRelease: String by project
 
-    targetConfigs("dev") {
-        create("android") {
-            buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlAndroidSimDev)
-        }
-        create("ios") {
-            buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlIosSimDev)
-        }
-    }
-
-    targetConfigs {
-        create("android") {
-            buildConfigField(FieldSpec.Type.STRING, platformProperty, "android")
-        }
-        create("ios") {
-            buildConfigField(FieldSpec.Type.STRING, platformProperty, "ios")
-        }
+    defaultConfigs {
+        buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlRelease)
+        buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabled, "false")
     }
 
     defaultConfigs("dev") {
@@ -155,10 +141,12 @@ buildkonfig {
         buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlStage)
         buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabled, "true")
     }
-
-    defaultConfigs {
-        buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlRelease)
-        buildConfigField(FieldSpec.Type.STRING, platformProperty, "unknown")
-        buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabled, "false")
+    targetConfigs("dev") {
+        create("android") {
+            buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlAndroidSimDev)
+        }
+        create("ios") {
+            buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlIosSimDev)
+        }
     }
 }

@@ -1,4 +1,4 @@
-package component.background
+package component.image
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -8,15 +8,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import i
+import mrp
 
 @Composable
-fun Background(
+fun BackgroundImage(
     painter: Painter,
+    modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit
 ) =
     Box(
-        modifier = with(Modifier) {
+        modifier = with(modifier) {
             fillMaxSize()
                 .paint(
                     painter,
@@ -28,5 +29,5 @@ fun Background(
     )
 
 @Composable
-fun MainBackground(content: @Composable BoxScope.() -> Unit) =
-    Background(i { main_background }, content)
+fun MainBackgroundImage(content: @Composable BoxScope.() -> Unit) =
+    BackgroundImage(mrp { main_background }, content = content)
