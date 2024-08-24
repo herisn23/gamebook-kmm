@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
     <string name="error.confirm">Potvrdit</string>
+    <string name="error.retry">Opakovat</string>
+    <string name="loading">Načítám</string>
 </resources>

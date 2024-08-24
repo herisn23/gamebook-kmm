@@ -1,15 +1,15 @@
 package remember
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.node.Ref
 import async.ExecutionScope
 import async.onBackground
 import async.onMain
 import async.onView
 import io.github.aakira.napier.Napier
+import kotlin.reflect.KProperty
 
 
 /**
@@ -27,6 +27,18 @@ fun <T> onBackground(): ExecutionScope<T> = ::onBackground
  */
 fun <T> onMain(): ExecutionScope<T> = ::onMain
 
+data class LazyRememberInitialized(
+    var initialized: Boolean = false
+)
+
+data class LazyState<T>(
+    private var state: State<T>,
+    val reload: () -> Unit,
+) {
+    val value get() = state.value
+}
+
+inline operator fun <T> LazyState<T>.getValue(thisObj: Any?, property: KProperty<*>): T = value
 
 @Composable
 inline fun <T> lazyRemember(
@@ -47,23 +59,30 @@ inline fun <T> lazyRemember(
     default: T,
     crossinline onError: (Throwable) -> Unit,
     crossinline initialize: suspend () -> T
-): MutableState<T> {
+): LazyState<T> {
     val state = remember { mutableStateOf(default) }
-    val initialized = remember { Ref<Boolean>() }
-    if (initialized.value == null) {
+    val initialized = remember { mutableStateOf(LazyRememberInitialized()) }
+    val lazyState = remember {
+        LazyState(state) {
+            //reload
+            initialized.value = LazyRememberInitialized()
+        }
+    }
+    if (!initialized.value.initialized) {
         execution(
             { initialize() },
             {
                 state.value = it
-                initialized.value = true
+                //avoid re-render
+                initialized.value.initialized = true
             },
             {
-                initialized.value = true
+                //avoid re-render
+                initialized.value.initialized = true
                 Napier.e(it) { "Error occurred when lazyRemembering" }
                 onError(it)
             }
         )
     }
-
-    return state
+    return lazyState
 }

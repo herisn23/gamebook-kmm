@@ -1,6 +1,5 @@
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.font.FontFamily
 import cz.roldy.gb.MR
@@ -17,7 +16,7 @@ import dev.icerock.moko.resources.desc.StringDesc
 expect fun imageResource(imageResource: ImageResource): ImageBitmap
 
 @Composable
-fun mrt(block: MR.strings.() -> StringResource): String =
+fun mrs(block: MR.strings.() -> StringResource): String =
     StringDesc.Resource(MR.strings.block()).localized()
 
 @Composable

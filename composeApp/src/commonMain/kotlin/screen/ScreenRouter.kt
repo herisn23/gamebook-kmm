@@ -1,13 +1,16 @@
 package screen
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedContentScope
+import androidx.compose.animation.ContentTransform
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
-import androidx.compose.animation.expandIn
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.shrinkOut
 import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,25 +33,48 @@ interface Screen<T> {
 
 typealias ComposeScreen<T> = @Composable (ScreenRouterScope<T>) -> Unit
 
-private val defaultEnter = fadeIn() + expandIn()
-private val defaultExit = shrinkOut() + fadeOut()
+
+data class ScreenTransition(
+    val enter: EnterTransition = fadeIn(),
+    val exit: ExitTransition = fadeOut(),
+) {
+    val transform: ContentTransform get() = enter.togetherWith(exit)
+}
+
+data class EnterTransitionWrapper(
+    val enter: EnterTransition
+)
+
+infix fun EnterTransition.exit(exit: ExitTransition) =
+    ScreenTransition(this, exit)
+
+infix fun Any?.enter(next: EnterTransition) = next
+
+infix fun EnterTransitionWrapper.exit(exit: ExitTransition) =
+    ScreenTransition(this.enter, exit)
+
+infix operator fun EnterTransition.plus(next: EnterTransition) =
+    EnterTransitionWrapper(this + next)
+
+infix fun ExitTransition.next(next: ExitTransition) =
+    this + next
+
 
 data class ScreenRouterScope<T>(
     val data: T,
-    private val _navigate: (Screen.Target<*>, EnterTransition, ExitTransition) -> Unit
+    val scope: AnimatedContentScope,
+    private val _navigate: (Screen.Target<*>, ScreenTransition) -> Unit
 ) {
     fun <E> navigate(
         id: Screen.Target<E>,
-        enter: EnterTransition = defaultEnter,
-        exit: ExitTransition = defaultExit
+        transition: ScreenTransition = ScreenTransition()
     ) =
-        _navigate(id, enter, exit)
+        _navigate(id, transition)
 }
 
 data class CurrentScreen(
     val target: Screen.Target<*>,
-    val enter: EnterTransition = defaultEnter,
-    val exit: ExitTransition = defaultExit
+    val transition: ScreenTransition = ScreenTransition()
 )
 
 class ScreenRoutingContent(
@@ -56,7 +82,9 @@ class ScreenRoutingContent(
 ) {
 
     fun <T : Any?> add(id: Screen<T>, content: ComposeScreen<T>) {
+        println("add screen $id")
         mapping[id] = content as ComposeScreen<*>
+        println("screen ${mapping.keys}")
     }
 
 }
@@ -64,13 +92,16 @@ class ScreenRoutingContent(
 @Composable
 fun <T> ScreenRouter(
     defaultScreen: Screen<T?>,
+    defaultTransition: ScreenTransition = ScreenTransition(),
     modifier: Modifier = Modifier,
     build: ScreenRoutingContent.() -> Unit
-) = ScreenRouter(defaultScreen, null, modifier, build)
+) = ScreenRouter(defaultScreen, defaultTransition, null, modifier, build)
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun <T> ScreenRouter(
     defaultScreen: Screen<T>,
+    defaultTransition: ScreenTransition = ScreenTransition(),
     defaultData: T,
     modifier: Modifier = Modifier,
     build: ScreenRoutingContent.() -> Unit
@@ -86,25 +117,37 @@ fun <T> ScreenRouter(
         )
     }
 
-    var currentScreen by remember { mutableStateOf(CurrentScreen(defaultScreen.target(defaultData))) }
+    var currentScreen by remember {
+        mutableStateOf(
+            CurrentScreen(
+                defaultScreen.target(defaultData),
+                defaultTransition
+            )
+        )
+    }
 
 
     AnimatedContent(
         currentScreen,
         transitionSpec = {
-            (currentScreen.enter).togetherWith(currentScreen.exit)
+            targetState.transition.enter togetherWith targetState.transition.exit
         },
-        modifier = modifier
+        modifier = modifier,
+        contentKey = { it.target.id }
     ) { state ->
+        val scope = this
         val content =
             mapping[state.target.id]
                 ?: throw Exception("screen ${state.target.id} is not configured")
-        content(
-            ScreenRouterScope(
-                state.target.data
-            ) { target, enter, exit ->
-                currentScreen = CurrentScreen(target, enter, exit)
-            }
-        )
+        Box(Modifier.fillMaxSize()) {
+            content(
+                ScreenRouterScope(
+                    state.target.data,
+                    scope
+                ) { target, transition ->
+                    currentScreen = CurrentScreen(target, transition)
+                }
+            )
+        }
     }
 }

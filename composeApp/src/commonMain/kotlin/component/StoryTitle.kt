@@ -10,20 +10,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.sp
 import bitmap
-import component.image.LazyBackgroundImage
+import component.image.LazyImage
 import cz.roldy.gb.story.model.StoryMetadata
 import http.cachedImage
 import http.sac
@@ -34,7 +28,7 @@ import titleFont
 @Composable
 fun StoryTitle(metadata: StoryMetadata) {
     val defaultStoryImage = mri { story_default }
-    LazyBackgroundImage(
+    LazyImage(
         defaultStoryImage,
         opacity = .7f,
         animationDuration = 500,
