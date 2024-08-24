@@ -2,7 +2,6 @@ package component.image
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -13,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.layout.ContentScale
 import remember.getValue
 import remember.lazyRemember
@@ -44,20 +44,19 @@ fun LazyImage(
         }.fillMaxSize()
     ) {
 
-        image.let { targetState ->
+        image.let { targetImage ->
             @Composable
             fun targetImage(bitmap: ImageBitmap, alpha: Float) =
-                Image(
-                    bitmap,
-                    contentDescription = "",
-                    contentScale = imageScale, // or some other scale
-                    modifier = modifier().alpha(alpha)
-                )
+                BackgroundImage(
+                    BitmapPainter(bitmap),
+                    modifier().alpha(alpha),
+                    imageScale = imageScale
+                ) { }
             if (defaultImage != null) {
                 targetImage(defaultImage, opacity - bgAlpha)
             }
-            if (targetState != null) {
-                targetImage(targetState, imgAlpha)
+            if (targetImage != null) {
+                targetImage(targetImage, imgAlpha)
             }
         }
 

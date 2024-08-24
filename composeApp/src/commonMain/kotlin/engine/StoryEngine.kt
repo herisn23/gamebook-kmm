@@ -18,3 +18,17 @@ class StoryEngine(
     fun t(block: StringProvider): String =
         block.translate(this)
 }
+
+fun Story.pickLanguage(selected: String) =
+    when (supportedLanguages.contains(selected)) {
+        true -> selected
+        false -> {
+            //if selected language is not supported try pick Czech
+            if (supportedLanguages.contains("cs")) {
+                "cs"
+            } else {
+                //if Czech language is not supported fallback to English
+                "en"
+            }
+        }
+    }

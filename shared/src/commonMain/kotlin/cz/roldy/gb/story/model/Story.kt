@@ -19,4 +19,6 @@ data class Story(
     val api: StoryApi,
     val metadata: StoryMetadata,
     override val localization: StoryLocalization
-) : LocalizedStory
+) : LocalizedStory {
+    val supportedLanguages by lazy { localization.keys }
+}

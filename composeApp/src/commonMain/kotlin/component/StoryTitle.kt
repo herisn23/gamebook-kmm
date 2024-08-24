@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import bitmap
 import component.image.LazyImage
 import cz.roldy.gb.story.model.StoryMetadata
+import defaultColors
 import http.cachedImage
 import http.sac
 import mri
@@ -26,7 +27,7 @@ import story.name
 import titleFont
 
 @Composable
-fun StoryTitle(metadata: StoryMetadata) {
+fun StoryTitle(metadata: StoryMetadata, content: @Composable () -> Unit = {}) {
     val defaultStoryImage = mri { story_default }
     LazyImage(
         defaultStoryImage,
@@ -41,6 +42,7 @@ fun StoryTitle(metadata: StoryMetadata) {
             Modifier
                 .fillMaxSize()
         ) {
+            content()
             Box(
                 Modifier
                     .size(
@@ -52,6 +54,7 @@ fun StoryTitle(metadata: StoryMetadata) {
             ) {
                 Text(
                     text = metadata.name,
+                    color = defaultColors.onPrimary,
                     modifier = Modifier
                         .fillMaxWidth()
                         .align(Alignment.Center)

@@ -1,16 +1,19 @@
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.dp
 
 val defaultColors: ColorScheme =
     ColorScheme(
-        primary = "#D0BCFFFF".toColor,
-        onPrimary = "#381E72FF".toColor,
-        primaryContainer = "#4F378BFF".toColor,
-        onPrimaryContainer = "#EADDFFFF".toColor,
-        inversePrimary = "#6750A4FF".toColor,
+        primary = "#493217".toColor,//5C4418
+        onPrimary = "#eecfaa".toColor,
+        primaryContainer = "#00138b".toColor,
+        onPrimaryContainer = "#00a2a4".toColor,
+        inversePrimary = "#b38f59".toColor,
         secondary = "#CCC2DCFF".toColor,
         onSecondary = "#332D41FF".toColor,
         secondaryContainer = "#4A4458FF".toColor,
@@ -23,7 +26,7 @@ val defaultColors: ColorScheme =
         onBackground = "#E6E1E5FF".toColor,
         surface = "#1C1B1FFF".toColor,
         onSurface = "#E6E1E5FF".toColor,
-        surfaceVariant = "#492f1a".toColor,
+        surfaceVariant = "#00000099".toColor,
         onSurfaceVariant = "#CAC4D0FF".toColor,
         surfaceTint = "#D0BCFFFF".toColor,
         inverseSurface = "#E6E1E5FF".toColor,
@@ -43,12 +46,31 @@ val defaultColors: ColorScheme =
         surfaceContainerLow = "#1C1B1FFF".toColor,
         surfaceContainerLowest = "#0E0E11FF".toColor
     )
+val defaultBackgroundColor = Color.Black.copy(alpha = 0.5f)
 
-val defaultFont:FontFamily @Composable get() =
-    mrf { opensans_medium }
 
-val titleFont:FontFamily @Composable get() =
-    mrf { matemasie_regular }
+val defaultRoundRadius = 15.dp
+
+val defaultRoundedShape = RoundedCornerShape(defaultRoundRadius)
+
+val bottomRoundedShape = RoundedCornerShape(0.dp, 0.dp, defaultRoundRadius, defaultRoundRadius)
+
+val topRoundedShape = RoundedCornerShape(defaultRoundRadius, defaultRoundRadius, 0.dp, 0.dp)
+
+
+val cardDefaultColors
+    @Composable
+    get() = CardDefaults.cardColors(
+        containerColor = defaultBackgroundColor
+    )
+
+val defaultFont: FontFamily
+    @Composable get() =
+        mrf { opensans_medium }
+
+val titleFont: FontFamily
+    @Composable get() =
+        mrf { matemasie_regular }
 
 
 val defaultTypography

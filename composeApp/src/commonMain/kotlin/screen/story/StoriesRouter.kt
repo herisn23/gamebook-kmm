@@ -21,7 +21,7 @@ fun StoriesRouter() {
             StoriesScreen(fadeIn() exit fadeOut()) { coord, story ->
                 val y = coord?.positionInRoot()?.y?.toInt() ?: 0
                 router.navigate(
-                    StoryPreview.target(story),
+                    StoryPreparation.target(story),
                     transition = expandVertically(
                         expandFrom = BiasAlignment.Vertical(-1f)
                     ) {
@@ -34,8 +34,9 @@ fun StoriesRouter() {
         }
 
         //Story preview
-        add(StoryPreview) { router ->
-            StoryPreviewScreen(router.data,
+        add(StoryPreparation) { router ->
+            StoryPreparationView(
+                router.data,
                 onBack = {
                     router.navigate(
                         StoriesScreen.target(),

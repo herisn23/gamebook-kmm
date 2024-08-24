@@ -25,14 +25,6 @@ suspend fun loadStory(metadata: StoryMetadata): Story = coroutineScope {
             Yaml().decodeFromString(StoryApi.serializer(), sac.api(metadata.id).source)
         },
         async {
-            val collected = mutableListOf<Pair<String, Map<String, String>>>()
-            awaitAll(
-                *collected.toList().map { lang ->
-                    async {
-
-                    }
-                }.toTypedArray()
-            )
             sac.localizations(metadata.id).mapAsync { lang ->
                 lang to sac.localizations(metadata.id, lang).source
             }.associate { (lang, content) ->
@@ -42,31 +34,6 @@ suspend fun loadStory(metadata: StoryMetadata): Story = coroutineScope {
                         messageKey.content to localization.yamlScalar.content
                     }.toMap()
 
-            }.run {
-                //move message key to top-level and langs underneath
-
-                /**
-                 * original:
-                 * cs: {
-                 *  key1: xxx
-                 *  key2: xxx
-                 * }
-                 *
-                 * switched:
-                 * key1: {
-                 *  cs: xxx
-                 *  en: xxx
-                 * }
-                 */
-
-                val messageKeys = values.map { it.keys }.flatten()
-                messageKeys.associateWith { key ->
-                    entries.mapNotNull { (l, m) ->
-                        m[key]?.let {
-                            l to it
-                        }
-                    }.toMap()
-                }
             }
         }
     ).let { (api, localization) ->

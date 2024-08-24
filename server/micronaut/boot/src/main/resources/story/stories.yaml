@@ -1,4 +1,7 @@
 zombie_apocalypse:
+  startGameText:
+    cs: Vzhůru do apokalypsy
+    en: Let's beat some zombies
   name:
     cs: Zombie apokalypsa
     en: Zombie apocalypse

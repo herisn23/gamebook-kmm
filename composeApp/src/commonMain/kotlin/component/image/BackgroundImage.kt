@@ -14,6 +14,7 @@ import mrp
 fun BackgroundImage(
     painter: Painter,
     modifier: Modifier = Modifier,
+    imageScale: ContentScale = ContentScale.FillBounds,
     content: @Composable BoxScope.() -> Unit
 ) =
     Box(
@@ -21,7 +22,7 @@ fun BackgroundImage(
             fillMaxSize()
                 .paint(
                     painter,
-                    contentScale = ContentScale.FillBounds
+                    contentScale = imageScale
                 )
 
         },

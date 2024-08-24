@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,6 +20,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import component.MainButton
+import io.ktor.utils.io.errors.IOException
 import mrs
 import remember.lazyRemember
 import screen.ScreenTransition
@@ -43,6 +44,12 @@ fun <T> LoaderView(
     errorButtonText: String? = null,
     loadingText: String? = null,
     modifier: Modifier = defaultLoadingBoxModifier,
+    errorMessage: @Composable (Throwable) -> String = {
+        when (it) {
+            is IOException -> mrs { error_message_internetConnection }
+            else -> mrs { error_message_generic }
+        }
+    },
     customLoadingView: (@Composable BoxScope.(String) -> Unit)? = null,
     loadingTransition: ScreenTransition = ScreenTransition(),
     contentTransition: ScreenTransition = ScreenTransition(),
@@ -87,25 +94,29 @@ fun <T> LoaderView(
                 }
 
                 LoaderViewState.Error -> {
-                    Box(modifier) {
-                        Column(Modifier.fillMaxSize()) {
-                            Text(
-                                error?.message ?: "Undefined error",
-                                modifier = Modifier.padding(DefaultPadding).weight(1f)
-                                    .wrapContentHeight(),
-                                textAlign = TextAlign.Center
-                            )
-                            Button(
-                                {
-                                    error = null
-                                    (onError ?: data.reload)()
-                                },
-                                modifier = Modifier.fillMaxWidth()
-                            ) {
-                                Text(errorButtonText ?: mrs { error_confirm })
+                    if (error != null)
+                        Box(modifier) {
+                            Column(Modifier.align(Alignment.Center)) {
+                                Text(
+                                    errorMessage(error!!),
+                                    modifier = Modifier
+                                        .padding(DefaultPadding)
+                                        .wrapContentHeight()
+                                        .fillMaxWidth()
+                                        .align(Alignment.CenterHorizontally),
+                                    textAlign = TextAlign.Center
+                                )
+                                MainButton(
+                                    {
+                                        error = null
+                                        (onError ?: data.reload)()
+                                    },
+                                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                                ) {
+                                    Text(errorButtonText ?: mrs { error_confirm })
+                                }
                             }
                         }
-                    }
                 }
 
                 LoaderViewState.Content -> {
