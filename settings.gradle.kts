@@ -25,7 +25,7 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
-        maven("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/eap")
+        maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
     }
     versionCatalogs {
         create("mn") {

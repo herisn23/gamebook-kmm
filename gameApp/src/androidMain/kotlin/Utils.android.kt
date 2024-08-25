@@ -7,10 +7,9 @@ actual val ByteArray.bitmap: ImageBitmap?
     get() = BitmapFactory.decodeByteArray(this, 0, size).asImageBitmap()
 
 
-actual val platform: Platform = object : Platform {
-    override val name: String = "android"
-    override val version: String by lazy {
+actual val platform: Platform =
+    Platform(
+        "android",
         Build.VERSION.SDK_INT.toString()
-    }
 
-}
+    )

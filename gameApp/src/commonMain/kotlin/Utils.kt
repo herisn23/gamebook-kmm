@@ -5,10 +5,10 @@ inline fun <reified T> Any?.cast(): T {
     return this as T
 }
 
-interface Platform {
-    val name: String
+data class Platform(
+    val name: String,
     val version:String
-}
+)
 
 expect val platform: Platform
 

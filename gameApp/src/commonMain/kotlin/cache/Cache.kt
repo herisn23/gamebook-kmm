@@ -1,15 +1,11 @@
 package cache
 
-expect suspend fun exist(fileName: String): Boolean
-expect suspend fun save(fileName: String, bytes: ByteArray?): ByteArray?
-expect suspend fun load(fileName: String): ByteArray?
-
 private val memoryCache = mutableMapOf<String, ByteArray>()
 
 private val maxMemoryConsumption: Int = 100_000_000 //100 MB
 
 enum class CacheType {
-    Memory, FileSystem
+    Memory
 }
 
 suspend fun cache(
@@ -20,7 +16,6 @@ suspend fun cache(
 ) =
     when (type) {
         CacheType.Memory -> inMemory(id, force, block)
-        CacheType.FileSystem -> fileSystem(id, force, block)
     }
 
 
@@ -44,13 +39,3 @@ private fun sum() =
 
 private fun isOutOfMemory(bytes: ByteArray) =
     sum() + bytes.size > maxMemoryConsumption
-
-private suspend fun fileSystem(
-    id: String,
-    force: Boolean = false,
-    block: suspend () -> ByteArray?
-) =
-    when (exist(id) && !force) {
-        true -> load(id)
-        false -> block()?.let { save(id, it) }
-    }

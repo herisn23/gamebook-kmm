@@ -22,7 +22,7 @@ jetbrains-navigation = "2.7.0-alpha07"
 kmm-resources = "1.0.0-alpha10"
 jetbrains-markdown = "0.7.3"
 markdown-renderer = "0.25.0"
-ktor = "2.3.12"
+ktor = "3.0.0-wasm2"
 buildKonfig = "0.15.1"
 uiGraphicsDesktop = "1.6.8"
 #server versions
