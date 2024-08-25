@@ -2,7 +2,6 @@ package cz.roldy.gb
 
 import App
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent

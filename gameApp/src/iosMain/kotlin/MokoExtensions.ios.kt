@@ -9,12 +9,10 @@ import kotlinx.cinterop.CPointed
 import kotlinx.cinterop.CPointer
 import kotlinx.cinterop.CValue
 import kotlinx.cinterop.ExperimentalForeignApi
-import org.jetbrains.skia.Image
-import platform.CoreGraphics.CGImageRef
-import platform.UIKit.UIImage
 import kotlinx.cinterop.refTo
 import org.jetbrains.skia.ColorAlphaType
 import org.jetbrains.skia.ColorType
+import org.jetbrains.skia.Image
 import org.jetbrains.skia.ImageInfo
 import platform.CoreGraphics.CGBitmapContextCreate
 import platform.CoreGraphics.CGColorSpaceCreateDeviceRGB
@@ -26,8 +24,10 @@ import platform.CoreGraphics.CGContextRelease
 import platform.CoreGraphics.CGImageAlphaInfo
 import platform.CoreGraphics.CGImageGetHeight
 import platform.CoreGraphics.CGImageGetWidth
+import platform.CoreGraphics.CGImageRef
 import platform.CoreGraphics.CGRect
 import platform.CoreGraphics.CGRectMake
+import platform.UIKit.UIImage
 import platform.posix.free
 import platform.posix.malloc
 import platform.posix.memcpy

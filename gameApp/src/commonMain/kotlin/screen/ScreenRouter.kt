@@ -30,6 +30,12 @@ interface Screen<T> {
     )
 }
 
+data class ComposeScreenDelegate<T>(
+    val compose: ComposeScreen<T>
+)
+
+@Composable
+expect fun <T> ComposeScreenDelegate<T>.invoke(scope: ScreenRouterScope<out Any?>)
 
 typealias ComposeScreen<T> = @Composable (ScreenRouterScope<T>) -> Unit
 
@@ -78,12 +84,12 @@ data class CurrentScreen(
 )
 
 class ScreenRoutingContent(
-    internal val mapping: MutableMap<Screen<*>, ComposeScreen<*>>
+    internal val mapping: MutableMap<Screen<*>, ComposeScreenDelegate<*>>
 ) {
 
     fun <T : Any?> add(id: Screen<T>, content: ComposeScreen<T>) {
         println("add screen $id")
-        mapping[id] = content as ComposeScreen<*>
+        mapping[id] = ComposeScreenDelegate(content)
         println("screen ${mapping.keys}")
     }
 
@@ -140,14 +146,13 @@ fun <T> ScreenRouter(
             mapping[state.target.id]
                 ?: throw Exception("screen ${state.target.id} is not configured")
         Box(Modifier.fillMaxSize()) {
-            content(
-                ScreenRouterScope(
-                    state.target.data,
-                    scope
-                ) { target, transition ->
-                    currentScreen = CurrentScreen(target, transition)
-                }
-            )
+            val scope = ScreenRouterScope(
+                state.target.data,
+                scope
+            ) { target, transition ->
+                currentScreen = CurrentScreen(target, transition)
+            }
+            content.invoke(scope as ScreenRouterScope<out Any?>)
         }
     }
 }

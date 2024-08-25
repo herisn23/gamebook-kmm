@@ -27,7 +27,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = "GameApp"
             isStatic = true
             freeCompilerArgs += listOf("-Xbinary=bundleId=cz.roldy.gb")
         }

@@ -36,7 +36,7 @@ dependencyResolutionManagement {
     }
 }
 
-include(":composeApp")
+include(":gameApp")
 include(":shared")
 
 include(":server")
