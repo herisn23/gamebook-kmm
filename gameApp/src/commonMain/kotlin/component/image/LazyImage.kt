@@ -11,19 +11,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import gamebook.gameapp.generated.resources.OpenSans_Medium
+import gamebook.gameapp.generated.resources.Res
 import remember.getValue
 import remember.lazyRemember
 
 @Composable
 fun LazyImage(
-    defaultImage: ImageBitmap? = null,
+    defaultImage: Painter? = null,
     imageScale: ContentScale = ContentScale.None,
     modifier: BoxScope.() -> Modifier = { Modifier },
     opacity: Float = 1f,
     animationDuration: Int = 100,
-    imageSource: suspend () -> ImageBitmap?,
+    imageSource: suspend () -> Painter?,
     content: @Composable BoxScope.() -> Unit
 ) {
     val image by lazyRemember { imageSource() }
@@ -45,7 +47,7 @@ fun LazyImage(
 
         image.let { targetImage ->
             @Composable
-            fun targetImage(bitmap: ImageBitmap, alpha: Float) =
+            fun targetImage(bitmap: Painter, alpha: Float) =
                 BackgroundImage(
                     bitmap,
                     modifier().alpha(alpha),
@@ -58,7 +60,7 @@ fun LazyImage(
                 targetImage(targetImage, imgAlpha)
             }
         }
-
+        Res.font.OpenSans_Medium
         //always render content
         content()
     }

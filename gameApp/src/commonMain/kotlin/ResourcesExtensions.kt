@@ -1,24 +1,15 @@
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.text.font.FontFamily
-import resources.Resources
-import resources.loadFile
-import resources.loadFont
+import androidx.compose.ui.graphics.painter.Painter
+import gamebook.gameapp.generated.resources.Res
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun t(block: Resources.Strings.() -> String): String =
-    Resources.Strings.block().let { key ->
-        LocalStringsContext.current[key] ?: "_${key}_"
-    }
+fun t(block: Res.string.() -> StringResource): String =
+    stringResource(Res.string.block())
 
 @Composable
-fun i(block: Resources.Images.() -> String): ImageBitmap =
-    Resources.Images.block().let { key ->
-        Resources.loadFile("images", key)!!.bitmap!!
-    }
-
-@Composable
-fun f(block: Resources.Fonts.() -> String): FontFamily =
-    Resources.Fonts.block().let { key ->
-        Resources.loadFont(key)
-    }
+fun p(block: Res.drawable.() -> DrawableResource): Painter =
+    painterResource(Res.drawable.block())

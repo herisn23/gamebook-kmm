@@ -6,6 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+import gamebook.gameapp.generated.resources.Matemasie_Regular
+import gamebook.gameapp.generated.resources.OpenSans_Medium
+import gamebook.gameapp.generated.resources.Res
+import org.jetbrains.compose.resources.Font
 
 val defaultColors: ColorScheme =
     ColorScheme(
@@ -66,11 +70,11 @@ val cardDefaultColors
 
 val defaultFont: FontFamily
     @Composable get() =
-        f { defaultFont }
+        FontFamily(Font(Res.font.OpenSans_Medium))
 
 val titleFont: FontFamily
     @Composable get() =
-        f { titleFont }
+        FontFamily(Font(Res.font.Matemasie_Regular))
 
 
 val defaultTypography

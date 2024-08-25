@@ -1,4 +1,6 @@
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.painter.BitmapPainter
+import androidx.compose.ui.graphics.painter.Painter
 
 inline fun <reified T> Any?.cast(): T {
     this is T
@@ -13,4 +15,5 @@ data class Platform(
 expect val platform: Platform
 
 expect val ByteArray.bitmap: ImageBitmap?
+val ByteArray.painter: Painter? get() = bitmap?.let(::BitmapPainter)
 

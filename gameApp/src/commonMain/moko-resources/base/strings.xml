@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="error.message.generic">Chyba</string>
+    <string name="error.message.internetConnection">Problém s připojením k internetu</string>
+    <string name="error.confirm">Potvrdit</string>
+    <string name="error.retry">Opakovat</string>
+    <string name="loading">Načítám</string>
+    <string name="continue_">Pokračovat</string>
+    <string name="stories">Příběhy</string>
+</resources>

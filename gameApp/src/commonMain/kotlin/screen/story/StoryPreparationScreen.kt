@@ -27,11 +27,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.painter.Painter
 import cardDefaultColors
 import component.StoryTitle
 import cz.roldy.gb.story.model.Story
 import cz.roldy.gb.story.model.StoryMetadata
+import gamebook.gameapp.generated.resources.error_retry
 import screen.Screen
 import story.desc
 import story.loadStory
@@ -39,7 +40,7 @@ import story.startGameText
 import t
 import view.LoaderView
 
-data object StoryPreparation : Screen<Pair<StoryMetadata, ImageBitmap>>
+data object StoryPreparation : Screen<Pair<StoryMetadata, Painter>>
 
 @Composable
 fun StoryStartView(metadata: StoryMetadata, onStart: (Story) -> Unit) {
@@ -80,7 +81,7 @@ fun StoryDescriptionView(metadata: StoryMetadata, onNex: () -> Unit) {
 @Composable
 fun StoryPreparationView(
     metadata: StoryMetadata,
-    image: ImageBitmap,
+    image: Painter,
     onBack: () -> Unit,
     onStart: (Story) -> Unit
 ) {

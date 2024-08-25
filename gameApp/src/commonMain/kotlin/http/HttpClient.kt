@@ -16,6 +16,7 @@ val defaultClient = buildClient {
     defaultRequest {
         url(BuildKonfig.API_URL)
         header("X-PLATFORM", platform.name)
+        header("Access-Control-Allow-Origin", "*")
     }
 
     if (BuildKonfig.HTTP_LOGGING_ENABLED)

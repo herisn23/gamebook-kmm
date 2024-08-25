@@ -6,14 +6,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.painter.BitmapPainter
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import i
+import gamebook.gameapp.generated.resources.Res
+import gamebook.gameapp.generated.resources.main_background
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun BackgroundImage(
-    bitmap: ImageBitmap,
+    painter: Painter,
     modifier: Modifier = Modifier,
     imageScale: ContentScale = ContentScale.FillBounds,
     content: @Composable BoxScope.() -> Unit
@@ -22,7 +23,7 @@ fun BackgroundImage(
         modifier = with(modifier) {
             fillMaxSize()
                 .paint(
-                    BitmapPainter(bitmap),
+                    painter,
                     contentScale = imageScale
                 )
 
@@ -32,4 +33,4 @@ fun BackgroundImage(
 
 @Composable
 fun MainBackgroundImage(content: @Composable BoxScope.() -> Unit) =
-    BackgroundImage(i { main_background }, content = content)
+    BackgroundImage(painterResource(Res.drawable.main_background), content = content)

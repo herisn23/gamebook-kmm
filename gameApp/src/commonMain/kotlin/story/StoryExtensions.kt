@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.intl.Locale
 import cz.roldy.gb.story.model.StoryMetadata
 import cz.roldy.gb.story.model.get
+import gamebook.gameapp.generated.resources.continue_
 import t
 
 

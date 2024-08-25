@@ -1,0 +1,9 @@
+<resources>
+    <string name="error_message_generic">Chyba</string>
+    <string name="error_message_internetConnection">Problém s připojením k internetu</string>
+    <string name="error_confirm">Potvrdit</string>
+    <string name="error_retry">Opakovat</string>
+    <string name="loading">Načítám</string>
+    <string name="continue_">Pokračovat</string>
+    <string name="stories">Příběhy</string>
+</resources>

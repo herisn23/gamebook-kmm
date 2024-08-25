@@ -1,0 +1,9 @@
+<resources>
+    <string name="error_message_generic">Error</string>
+    <string name="error_message_internetConnection">Internet connection error</string>
+    <string name="error_confirm">Confirm</string>
+    <string name="error_retry">Retry</string>
+    <string name="loading">Loading</string>
+    <string name="continue_">Continue</string>
+    <string name="stories">Stories</string>
+</resources>

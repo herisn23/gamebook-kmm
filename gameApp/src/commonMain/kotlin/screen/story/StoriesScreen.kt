@@ -19,7 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.node.Ref
@@ -29,7 +29,12 @@ import component.StoryTitle
 import cz.roldy.gb.story.model.StoryMetadata
 import defaultBackgroundColor
 import defaultColors
-import i
+import gamebook.gameapp.generated.resources.Res
+import gamebook.gameapp.generated.resources.error_retry
+import gamebook.gameapp.generated.resources.stories
+import gamebook.gameapp.generated.resources.story_default
+import org.jetbrains.compose.resources.stringResource
+import p
 import screen.Screen
 import screen.ScreenTransition
 import story.loadStories
@@ -45,13 +50,13 @@ data object StoriesScreen : Screen<Any?> {
 @Composable
 fun StoriesScreen(
     transition: ScreenTransition,
-    onStoryPick: (LayoutCoordinates?, StoryMetadata, ImageBitmap) -> Unit
+    onStoryPick: (LayoutCoordinates?, StoryMetadata, Painter) -> Unit
 ) {
 
     Column {
         Box(Modifier.background(defaultBackgroundColor.copy(.2f))) {
             Text(
-                t { stories },
+                stringResource(Res.string.stories),
                 color = defaultColors.onPrimary,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -79,8 +84,8 @@ fun StoriesScreen(
                     .padding(horizontal = ScreenPadding)
             ) {
                 items(stories) { story ->
-                    val image = remember { Ref<ImageBitmap>() }
-                    val defaultImage = i { story_default }
+                    val image = remember { Ref<Painter>() }
+                    val defaultImage = p { story_default }
                     val pos = remember { Ref<LayoutCoordinates>() }
                     Card(
                         onClick = {

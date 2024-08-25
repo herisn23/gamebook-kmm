@@ -55,6 +55,7 @@ ktor-plugins-resources = { module = "io.ktor:ktor-client-resources", version.ref
 ktor-plugins-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-plugins-negotiation-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-plugins-headers = { module = "io.ktor:ktor-server-default-headers" }
+#ktor-plugins-cors = {module="io.ktor:ktor-server-cors", version.ref="cors"}
 androidx-ui-graphics-desktop = { group = "androidx.compose.ui", name = "ui-graphics-desktop", version.ref = "uiGraphicsDesktop" }
 androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }

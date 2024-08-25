@@ -21,6 +21,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import gamebook.gameapp.generated.resources.error_confirm
+import gamebook.gameapp.generated.resources.error_message_generic
+import gamebook.gameapp.generated.resources.error_message_internetConnection
+import gamebook.gameapp.generated.resources.loading
 import io.ktor.utils.io.errors.IOException
 import remember.lazyRemember
 import screen.ScreenTransition
