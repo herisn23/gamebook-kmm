@@ -8,3 +8,13 @@ zombie_apocalypse:
   desc:
     cs: Přežij ve světe mozkuchtivých zombie
     en: Survive in the world full of brain-eaters
+dev_story:
+  startGameText:
+    cs: Test
+    en: Test
+  name:
+    cs: Dev story
+    en: Dev story
+  desc:
+    cs: Dev story
+    en: Dev story

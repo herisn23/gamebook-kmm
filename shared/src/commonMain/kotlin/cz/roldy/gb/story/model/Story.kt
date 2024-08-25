@@ -16,7 +16,7 @@ data class StoryMetadata(
 
 @Serializable
 data class Story(
-    val api: StoryApi,
+    val definition: StoryDefinition,
     val metadata: StoryMetadata,
     override val localization: StoryLocalization
 ) : LocalizedStory {

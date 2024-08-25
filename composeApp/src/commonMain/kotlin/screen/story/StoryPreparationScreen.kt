@@ -46,7 +46,7 @@ fun StoryStartView(metadata: StoryMetadata, onStart: (Story) -> Unit) {
     LoaderView(
         null,
         { this != null },
-        { loadStory(metadata) },
+        { loadStory(metadata).also(::println) },
         errorButtonText = mrs { error_retry },
         modifier = Modifier.fillMaxSize()
     ) { story ->

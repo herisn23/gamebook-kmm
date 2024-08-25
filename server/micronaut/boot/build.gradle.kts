@@ -12,6 +12,8 @@ dependencies {
     implementation(mn.micronaut.reactor)
     implementation(mn.micrometer.context.propagation)
 
+    implementation(mn.jackson.databind)
+
     //arm libs
     implementation(
         group = "io.netty",

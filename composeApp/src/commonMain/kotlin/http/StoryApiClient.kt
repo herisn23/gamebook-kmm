@@ -2,7 +2,6 @@ package http
 
 import cache.cache
 import cz.roldy.gb.story.model.YamlSource
-import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.accept
@@ -21,8 +20,8 @@ class StoryApiClient(private val client: HttpClient) : HttpApiClient {
     suspend fun localizations(id: String, lang: String): YamlSource =
         client.get("/story/$id/localization/$lang").body()
 
-    suspend fun api(id: String): YamlSource =
-        client.get("/story/$id").body()
+    suspend fun api(id: String, api: String): YamlSource =
+        client.get("/story/$id/$api").body()
 
     suspend fun image(id: String): ByteArray? =
         client.get("/story/image/$id") {

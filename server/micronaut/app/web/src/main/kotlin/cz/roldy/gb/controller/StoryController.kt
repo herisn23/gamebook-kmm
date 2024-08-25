@@ -29,6 +29,10 @@ class StoryController(
     fun story(@PathVariable id: String): Mono<YamlSource> =
         getResource("$id/api.yaml").readContent().toYamlSource()
 
+    @Get("/{id}/api/{file}")
+    fun api(@PathVariable id: String, @PathVariable file: String): Mono<YamlSource> =
+        getResource("$id/api/$file").readContent().toYamlSource()
+
     @Get("/image/{id}", produces = ["image/png"])
     fun image(@PathVariable id: String) =
         getResource("$id/image.png").readContent()

@@ -5,7 +5,7 @@ import cz.roldy.gb.story.localization.handler.inflection
 import cz.roldy.gb.story.localization.handler.selection
 import cz.roldy.gb.story.localization.handler.simple
 import cz.roldy.gb.story.model.LocalizedString
-import cz.roldy.gb.story.model.StoryApi
+import cz.roldy.gb.story.model.StoryDefinition
 
 typealias ArgumentResolver = (CompositeLocalizedString.Selector) -> String
 
@@ -20,10 +20,10 @@ data class LocalizedStringProxy(
     val argumentDelegate: ArgumentResolver? = null
 )
 
-typealias StringProvider = StoryApi.() -> LocalizedStringProxy
+typealias StringProvider = StoryDefinition.() -> LocalizedStringProxy
 
 fun <T : IStoryLocalizedContext> StringProvider.translate(engine: T): String =
-    engine.story.api.this().let { proxy ->
+    engine.story.definition.this().let { proxy ->
         when (val loc = proxy.localizedString.handler) {
             is Simple -> proxy.simple(engine)
             is Selection -> proxy.selection(engine, loc)
