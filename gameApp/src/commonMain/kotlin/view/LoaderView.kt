@@ -22,9 +22,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import io.ktor.utils.io.errors.IOException
-import mrs
 import remember.lazyRemember
 import screen.ScreenTransition
+import t
 
 
 enum class LoaderViewState {
@@ -46,8 +46,8 @@ fun <T> LoaderView(
     modifier: Modifier = defaultLoadingBoxModifier,
     errorMessage: @Composable (Throwable) -> String = {
         when (it) {
-            is IOException -> mrs { error_message_internetConnection }
-            else -> mrs { error_message_generic }
+            is IOException -> t { error_message_internetConnection }
+            else -> t { error_message_generic }
         }
     },
     customLoadingView: (@Composable BoxScope.(String) -> Unit)? = null,
@@ -78,7 +78,7 @@ fun <T> LoaderView(
             when (state) {
                 LoaderViewState.Loading -> {
                     Box(modifier) {
-                        val text = loadingText ?: mrs { loading }
+                        val text = loadingText ?: t { loading }
                         customLoadingView?.let {
                             with(this) {
                                 it(text)
@@ -113,7 +113,7 @@ fun <T> LoaderView(
                                     },
                                     modifier = Modifier.align(Alignment.CenterHorizontally)
                                 ) {
-                                    Text(errorButtonText ?: mrs { error_confirm })
+                                    Text(errorButtonText ?: t { error_confirm })
                                 }
                             }
                         }

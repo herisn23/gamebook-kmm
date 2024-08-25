@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
@@ -26,7 +25,7 @@ import cz.roldy.gb.story.model.StoryMetadata
 import defaultColors
 import http.cachedImage
 import http.sac
-import mri
+import i
 import story.name
 
 @Composable
@@ -67,13 +66,13 @@ fun StoryTitle(
         }
     if (preloadedImage != null) {
         BackgroundImage(
-            BitmapPainter(preloadedImage),
+            preloadedImage,
             Modifier.alpha(.7f),
             imageScale = ContentScale.Crop
         ) { }
         innerContent()
     } else {
-        val defaultStoryImage = mri { story_default }
+        val defaultStoryImage = i { story_default }
         LazyImage(
             defaultStoryImage,
             opacity = .7f,

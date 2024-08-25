@@ -29,11 +29,11 @@ import component.StoryTitle
 import cz.roldy.gb.story.model.StoryMetadata
 import defaultBackgroundColor
 import defaultColors
-import mri
-import mrs
+import i
 import screen.Screen
 import screen.ScreenTransition
 import story.loadStories
+import t
 import titleFont
 import view.LoaderView
 
@@ -51,7 +51,7 @@ fun StoriesScreen(
     Column {
         Box(Modifier.background(defaultBackgroundColor.copy(.2f))) {
             Text(
-                mrs { stories },
+                t { stories },
                 color = defaultColors.onPrimary,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -66,7 +66,7 @@ fun StoriesScreen(
             emptyList(),
             { isNotEmpty() },
             { loadStories() },
-            errorButtonText = mrs { error_retry },
+            errorButtonText = t { error_retry },
             contentTransition = transition,
             errorTransition = transition,
             loadingTransition = transition
@@ -80,7 +80,7 @@ fun StoriesScreen(
             ) {
                 items(stories) { story ->
                     val image = remember { Ref<ImageBitmap>() }
-                    val defaultImage = mri { story_default }
+                    val defaultImage = i { story_default }
                     val pos = remember { Ref<LayoutCoordinates>() }
                     Card(
                         onClick = {

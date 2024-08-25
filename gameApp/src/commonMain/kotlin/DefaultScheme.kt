@@ -66,11 +66,11 @@ val cardDefaultColors
 
 val defaultFont: FontFamily
     @Composable get() =
-        mrf { opensans_medium }
+        f { defaultFont }
 
 val titleFont: FontFamily
     @Composable get() =
-        mrf { matemasie_regular }
+        f { titleFont }
 
 
 val defaultTypography

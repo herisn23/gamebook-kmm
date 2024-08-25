@@ -8,7 +8,6 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlinSerialization)
-    alias(libs.plugins.moko.resources)
     alias(libs.plugins.buildKonfig)
 }
 
@@ -49,7 +48,6 @@ kotlin {
             freeCompilerArgs += listOf("-Xbinary=bundleId=cz.roldy.gb")
         }
     }
-    apply(plugin = "dev.icerock.mobile.multiplatform-resources")
     sourceSets {
 
         androidMain.dependencies {
@@ -72,8 +70,6 @@ kotlin {
             implementation(libs.kotlinx.serialization.yaml)
             implementation(libs.androidx.core.ktx)
             implementation(libs.androidx.core)
-            implementation(libs.moko.resources)
-            implementation(libs.moko.resources.compose)
             implementation(libs.markdown.renderer)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.plugins.resources)
@@ -84,14 +80,6 @@ kotlin {
         iosMain.dependencies {
             implementation(libs.ktor.client.ios)
         }
-    }
-
-    multiplatformResources {
-        resourcesPackage.set("cz.roldy.gb") // required
-//       resourcesClassName.set("SharedRes") // optional, default MR
-//        resourcesVisibility.set(MRVisibility.Internal) // optional, default Public
-        iosBaseLocalizationRegion.set("cs") // optional, default "en"
-        iosMinimalDeploymentTarget.set("13.0") // optional, default "9.0"
     }
 }
 

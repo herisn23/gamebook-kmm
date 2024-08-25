@@ -20,7 +20,6 @@ kotlin-serialization = "2.0.0"
 kaml = "0.61.0"
 jetbrains-navigation = "2.7.0-alpha07"
 kmm-resources = "1.0.0-alpha10"
-moko-resources = "0.24.1"
 jetbrains-markdown = "0.7.3"
 markdown-renderer = "0.25.0"
 ktor = "2.3.12"
@@ -45,8 +44,6 @@ aakira-napier = { group = "io.github.aakira", name = "napier", version.ref = "aa
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 kotlinx-serialization-yaml = { module = "com.charleskorn.kaml:kaml", version.ref = "kaml" }
 jetbrains-navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "jetbrains-navigation" }
-moko-resources = { module = "dev.icerock.moko:resources", version.ref = "moko-resources" }
-moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-resources" }
 jetbrains-markdown = { module = "org.jetbrains:markdown", version.ref = "jetbrains-markdown" }
 markdown-renderer = { module = "com.mikepenz:multiplatform-markdown-renderer-m3", version.ref = "markdown-renderer" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
@@ -64,7 +61,6 @@ androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle
 
 [plugins]
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }

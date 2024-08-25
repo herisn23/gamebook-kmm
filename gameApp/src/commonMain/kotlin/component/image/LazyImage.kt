@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.layout.ContentScale
 import remember.getValue
 import remember.lazyRemember
@@ -48,7 +47,7 @@ fun LazyImage(
             @Composable
             fun targetImage(bitmap: ImageBitmap, alpha: Float) =
                 BackgroundImage(
-                    BitmapPainter(bitmap),
+                    bitmap,
                     modifier().alpha(alpha),
                     imageScale = imageScale
                 ) { }

@@ -1,5 +1,6 @@
 package resources
 
+import androidx.compose.ui.text.font.FontFamily
 import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.yamlMap
 import com.charleskorn.kaml.yamlScalar
@@ -16,9 +17,22 @@ object Resources {
         val continue_: String = "continue"
         val stories: String = "stories"
     }
+    object Images {
+        val main_background: String = "main_background.jpg"
+        val story_default: String = "story_default.jpg"
+    }
+
+    object Fonts {
+        val defaultFont = "OpenSans-Medium.ttf"
+        val titleFont = "Matemasie-Regular.ttf"
+    }
 }
 
 expect suspend fun Resources.loadStrings(languages: List<String>): Strings
+
+expect fun Resources.loadFile(dir: String, name: String): ByteArray?
+
+expect fun Resources.loadFont(name: String): FontFamily
 
 fun stringsContentToMap(content: String): Map<String, String> =
     Yaml.default.parseToYamlNode(content)

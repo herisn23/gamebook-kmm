@@ -32,11 +32,11 @@ import cardDefaultColors
 import component.StoryTitle
 import cz.roldy.gb.story.model.Story
 import cz.roldy.gb.story.model.StoryMetadata
-import mrs
 import screen.Screen
 import story.desc
 import story.loadStory
 import story.startGameText
+import t
 import view.LoaderView
 
 data object StoryPreparation : Screen<Pair<StoryMetadata, ImageBitmap>>
@@ -47,7 +47,7 @@ fun StoryStartView(metadata: StoryMetadata, onStart: (Story) -> Unit) {
         null,
         { this != null },
         { loadStory(metadata) },
-        errorButtonText = mrs { error_retry },
+        errorButtonText = t { error_retry },
         modifier = Modifier.fillMaxSize()
     ) { story ->
         Text("available start positions in story")
