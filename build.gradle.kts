@@ -15,4 +15,5 @@ plugins {
     alias(sl.plugins.kover) apply false
     alias(sl.plugins.sonarqube) apply false
     alias(sl.plugins.kotlin.allopen) apply false
+    alias(libs.plugins.buildKonfig) apply false
 }

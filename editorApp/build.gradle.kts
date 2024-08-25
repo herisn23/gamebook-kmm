@@ -9,6 +9,7 @@ plugins {
 }
 
 kotlin {
+//    if(project.hasProperty("editor"))
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         moduleName = "editorApp"
@@ -30,15 +31,29 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(projects.shared)
+
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material)
+            implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(libs.jetbrains.navigation)
+            implementation(libs.aakira.napier)
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlinx.serialization.yaml)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
-            implementation(projects.shared)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.plugins.resources)
+            implementation(libs.ktor.plugins.negotiation)
+            implementation(libs.ktor.plugins.negotiation.json)
+            implementation(libs.ktor.plugins.logging)
+        }
+
+        wasmJsMain.dependencies {
+            implementation(libs.ktor.client.js)
         }
     }
 }
