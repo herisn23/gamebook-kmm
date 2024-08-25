@@ -10,6 +10,7 @@ androidx-core = "1.13.1"
 androidx-espresso-core = "3.6.1"
 androidx-material = "1.12.0"
 androidx-test-junit = "1.2.1"
+androidx-lifecycle = "2.8.0"
 compose-plugin = "1.6.11"
 junit = "4.13.2"
 kotlin = "2.0.20"
@@ -51,13 +52,15 @@ markdown-renderer = { module = "com.mikepenz:multiplatform-markdown-renderer-m3"
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-client-ios = { module = "io.ktor:ktor-client-ios", version.ref = "ktor" }
+ktor-client-wasmjs = { module = "io.ktor:ktor-client-wasmjs", version.ref = "ktor" }
 ktor-plugins-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-plugins-resources = { module = "io.ktor:ktor-client-resources", version.ref = "ktor" }
 ktor-plugins-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-plugins-negotiation-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-plugins-headers = { module = "io.ktor:ktor-server-default-headers" }
 androidx-ui-graphics-desktop = { group = "androidx.compose.ui", name = "ui-graphics-desktop", version.ref = "uiGraphicsDesktop" }
-#server libraries
+androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 
 [plugins]
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

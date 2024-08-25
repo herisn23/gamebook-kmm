@@ -1,0 +1,24 @@
+zombie_apocalypse:
+  supportedLanguages: [ "cs", "en" ]
+  baseTexts:
+    startGameText:
+      cs: Vzhůru do apokalypsy
+      en: Let's beat some zombies
+    name:
+      cs: Zombie apokalypsa
+      en: Zombie apocalypse
+    desc:
+      cs: Přežij ve světe mozkuchtivých zombie
+      en: Survive in the world full of brain-eaters
+dev_story:
+  supportedLanguages: [ "cs" ]
+  baseTexts:
+    startGameText:
+      cs: Test
+      en: Test
+    name:
+      cs: Dev story
+      en: Dev story
+    desc:
+      cs: Dev story
+      en: Dev story

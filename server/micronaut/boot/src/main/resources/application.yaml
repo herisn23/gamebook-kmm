@@ -13,6 +13,9 @@ micronaut:
       swagger-ui:
         paths: classpath:META-INF/swagger/views/swagger-ui
         mapping: /swagger-ui/**
+      stories:
+        paths: classpath:stories
+        mapping: /**
   server:
     max-request-size: '1GB'
     multipart:

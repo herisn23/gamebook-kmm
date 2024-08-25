@@ -25,6 +25,7 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/eap")
     }
     versionCatalogs {
         create("mn") {
@@ -36,8 +37,11 @@ dependencyResolutionManagement {
     }
 }
 
-include(":gameApp")
 include(":shared")
+
+include(":gameApp")
+include(":editorApp")
+
 
 include(":server")
 include(":server:flyway")

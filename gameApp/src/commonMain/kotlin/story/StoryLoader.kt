@@ -2,6 +2,7 @@ package story
 
 import async.mapAsync
 import com.charleskorn.kaml.Yaml
+import com.charleskorn.kaml.YamlList
 import com.charleskorn.kaml.YamlNode
 import com.charleskorn.kaml.yamlMap
 import com.charleskorn.kaml.yamlScalar
@@ -24,7 +25,7 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 
 suspend fun loadStories(): List<StoryMetadata> =
-    sac.stories().source.let {
+    sac.stories().let {
         Yaml.default.parseToYamlNode(it).storyMetadata
     }
 
@@ -40,12 +41,12 @@ suspend fun loadStory(metadata: StoryMetadata): Story = coroutineScope {
                     defaults as StoryDefaults,
                     (sections as StorySections).sections,
                     (characters as StoryCharacters).characters,
-                ).also(::println)
+                )
             }
         },
         async {
-            sac.localizations(metadata.id).mapAsync { lang ->
-                lang to sac.localizations(metadata.id, lang).source
+            metadata.supportedLanguages.mapAsync { lang ->
+                lang to sac.strings(metadata.id, lang)
             }.associate { (lang, content) ->
                 lang to Yaml.default.parseToYamlNode(content)
                     .yamlMap.entries
@@ -71,13 +72,16 @@ private val YamlNode.storyLocalization: StoryLocalization
 private val YamlNode.storyMetadata: List<StoryMetadata>
     get() =
         yamlMap.entries.map { (storyId, metadata) ->
+            val supportedLanguages = metadata.yamlMap.get<YamlList>("supportedLanguages")
+            val localization = metadata.yamlMap.get<YamlNode>("baseTexts")
             StoryMetadata(
                 storyId.content,
-                metadata.storyLocalization
+                supportedLanguages!!.items.map { it.yamlScalar.content },
+                localization!!.storyLocalization
             )
         }
 
 suspend fun <T> StoryApiPart<T>.fetch(scope: CoroutineScope, metadata: StoryMetadata): Deferred<T> =
     scope.async {
-        Yaml.default.decodeFromString(serializer, sac.api(metadata.id, path()).source)
+        Yaml.default.decodeFromString(serializer, sac.api(metadata.id, path()))
     }

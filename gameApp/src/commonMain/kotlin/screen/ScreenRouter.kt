@@ -88,9 +88,7 @@ class ScreenRoutingContent(
 ) {
 
     fun <T : Any?> add(id: Screen<T>, content: ComposeScreen<T>) {
-        println("add screen $id")
         mapping[id] = ComposeScreenDelegate(content)
-        println("screen ${mapping.keys}")
     }
 
 }

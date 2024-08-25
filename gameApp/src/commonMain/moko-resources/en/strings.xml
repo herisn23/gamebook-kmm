@@ -5,6 +5,6 @@
     <string name="error.confirm">Confirm</string>
     <string name="error.retry">Retry</string>
     <string name="loading">Loading</string>
-    <string name="continue">Continue</string>
+    <string name="continue_">Continue</string>
     <string name="stories">Stories</string>
 </resources>

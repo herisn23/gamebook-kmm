@@ -20,6 +20,23 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
+//    wasmJs {
+//        moduleName = "gameApp"
+//        browser{
+//            val projectDirPath = project.projectDir.path
+//            commonWebpackConfig {
+//                outputFileName = "gameApp.js"
+//                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
+//                    port = 3000
+//                    static = (static ?: mutableListOf()).apply {
+//                        // Serve sources to debug inside browser
+//                        add(projectDirPath)
+//                    }
+//                }
+//            }
+//        }
+//        binaries.executable()
+//    }
 
     listOf(
 //        iosX64(),

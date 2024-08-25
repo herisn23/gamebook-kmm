@@ -11,6 +11,7 @@ interface LocalizedStory {
 @Serializable
 data class StoryMetadata(
     val id: String,
+    val supportedLanguages: List<String>,
     override val localization: StoryLocalization
 ) : LocalizedStory
 
