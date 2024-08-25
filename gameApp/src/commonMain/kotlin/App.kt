@@ -29,8 +29,4 @@ fun App() {
         }
 
     }
-
-//    LazyImage(p { story_default }, imageSource = { sac.image("dev_story")?.painter }) {
-//
-//    }
 }

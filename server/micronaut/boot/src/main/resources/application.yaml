@@ -15,7 +15,7 @@ micronaut:
         mapping: /swagger-ui/**
       stories:
         paths: classpath:stories
-        mapping: /**
+        mapping: /gamebook-stories/**
   server:
     max-request-size: '1GB'
     multipart:

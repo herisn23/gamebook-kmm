@@ -1,4 +1,6 @@
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.toComposeImageBitmap
+import org.jetbrains.skia.Image
 
 actual val platform: Platform
     get() = Platform(
@@ -7,5 +9,5 @@ actual val platform: Platform
     )
 
 actual val ByteArray.bitmap: ImageBitmap?
-    get()
-    = null
+    get() =
+        Image.makeFromEncoded(this).toComposeImageBitmap()

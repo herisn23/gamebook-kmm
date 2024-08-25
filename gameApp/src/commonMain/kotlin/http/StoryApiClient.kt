@@ -11,16 +11,16 @@ import io.ktor.http.HttpStatusCode
 
 class StoryApiClient(private val client: HttpClient) : HttpApiClient {
     suspend fun stories(): String =
-        client.get("/stories.yaml").body()
+        client.get("/gamebook-stories/stories.yaml").body()
 
     suspend fun strings(id: String, lang: String): String =
-        client.get("/story/$id/strings/$lang.yaml").body()
+        client.get("/gamebook-stories/story/$id/strings/$lang.yaml").body()
 
     suspend fun api(id: String, api: String): String =
-        client.get("/story/$id/$api").body()
+        client.get("/gamebook-stories/story/$id/$api").body()
 
     suspend fun image(id: String): ByteArray? =
-        client.get("/story/$id/image.png") {
+        client.get("/gamebook-stories/story/$id/image.png") {
             accept(ContentType.Image.PNG)
         }.body(HttpStatusCode.OK)
 }

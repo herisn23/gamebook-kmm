@@ -2,11 +2,6 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.graphics.painter.Painter
 
-inline fun <reified T> Any?.cast(): T {
-    this is T
-    return this as T
-}
-
 data class Platform(
     val name: String,
     val version:String
