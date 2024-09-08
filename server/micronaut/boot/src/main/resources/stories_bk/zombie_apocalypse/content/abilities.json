@@ -1,0 +1,430 @@
+{
+  "abilities": [
+    {
+      "afterEnemyAttack": true,
+      "attempts": 1,
+      "coeff": 2.0,
+      "id": "skill_id_0",
+      "increase": true,
+      "levelRequired": 1,
+      "permanent": true,
+      "name": "injection",
+      "type": "health"
+    },
+    {
+      "attempts": 1,
+      "coeff": 0.5,
+      "condition": true,
+      "id": "skill_id_1",
+      "increase": true,
+      "levelRequired": 2,
+      "name": "concentration",
+      "turns": 4,
+      "type": "skillpower"
+    },
+    {
+      "attempts": 2,
+      "coeff": 3.5,
+      "id": "skill_id_2",
+      "increase": true,
+      "levelRequired": 5,
+      "permanent": true,
+      "name": "adrenaline",
+      "type": "health"
+    },
+    {
+      "attempts": 2,
+      "coeff": 5.0,
+      "id": "skill_id_3",
+      "increase": true,
+      "levelRequired": 14,
+      "permanent": true,
+      "name": "secret_research_fluid",
+      "type": "health"
+    },
+    {
+      "attempts": 2,
+      "coeff": 0.5,
+      "id": "skill_id_4",
+      "increase": true,
+      "levelRequired": 3,
+      "permanent": true,
+      "name": "refreshing_lemonade",
+      "turns": 5,
+      "type": "health"
+    },
+    {
+      "attempts": 2,
+      "beforeEnemyAttack": true,
+      "coeff": 1.0,
+      "id": "skill_id_5",
+      "levelRequired": 6,
+      "permanent": true,
+      "name": "injection_with_mortal_virus",
+      "turns": 3,
+      "type": "health"
+    },
+    {
+      "attempts": 1,
+      "id": "skill_id_6",
+      "increase": true,
+      "levelRequired": 9,
+      "proprietarySkill": "cancel_debuff",
+      "name": "antivirus_a",
+      "turns": 5
+    },
+    {
+      "attempts": 1,
+      "id": "skill_id_7",
+      "increase": true,
+      "levelRequired": 7,
+      "proprietarySkill": "cancel_dot",
+      "name": "antivirus_b",
+      "turns": 5
+    },
+    {
+      "attempts": 1,
+      "id": "skill_id_8",
+      "levelRequired": 13,
+      "proprietarySkill": "cancel_buff",
+      "name": "virus_a",
+      "turns": 5
+    },
+    {
+      "attempts": 1,
+      "id": "skill_id_9",
+      "levelRequired": 10,
+      "proprietarySkill": "cancel_hot",
+      "name": "virus_b",
+      "turns": 5
+    },
+    {
+      "attempts": 2,
+      "beforeEnemyAttack": true,
+      "condition": true,
+      "id": "skill_id_10",
+      "increase": true,
+      "levelRequired": 1,
+      "name": "bulletproof_vest",
+      "turns": 2,
+      "type": "defense"
+    },
+    {
+      "attempts": 1,
+      "beforeEnemyAttack": true,
+      "coeff": 2.0,
+      "condition": true,
+      "id": "skill_id_11",
+      "increase": true,
+      "levelRequired": 5,
+      "name": "titan_vest",
+      "turns": 5,
+      "type": "defense"
+    },
+    {
+      "attempts": 2,
+      "beforeEnemyAttack": true,
+      "coeff": 3.5,
+      "condition": true,
+      "id": "skill_id_12",
+      "increase": true,
+      "levelRequired": 14,
+      "name": "armored_vest",
+      "turns": 3,
+      "type": "defense"
+    },
+    {
+      "attempts": 1,
+      "coeff": 3.5,
+      "id": "skill_id_13",
+      "increase": true,
+      "levelRequired": 2,
+      "proprietarySkill": "stun",
+      "name": "time_to_rest",
+      "turns": 3
+    },
+    {
+      "attempts": 2,
+      "coeff": 3.5,
+      "id": "skill_id_14",
+      "levelRequired": 3,
+      "permanent": true,
+      "name": "hard_kick",
+      "type": "health"
+    },
+    {
+      "attempts": 2,
+      "coeff": 2.0,
+      "id": "skill_id_15",
+      "levelRequired": 9,
+      "permanent": true,
+      "name": "lasting_consequences",
+      "turns": 3,
+      "type": "health"
+    },
+    {
+      "id": "skill_id_16",
+      "levelRequired": 6,
+      "proprietarySkill": "cancel_debuff",
+      "name": "recover"
+    },
+    {
+      "attempts": 1,
+      "beforeEnemyAttack": true,
+      "condition": true,
+      "id": "skill_id_17",
+      "levelRequired": 7,
+      "name": "disarm",
+      "turns": 5,
+      "type": "attack"
+    },
+    {
+      "attempts": 1,
+      "beforeEnemySkill": true,
+      "condition": true,
+      "id": "skill_id_18",
+      "levelRequired": 10,
+      "name": "mind_manipulation",
+      "turns": 3,
+      "type": "skillpower"
+    },
+    {
+      "attempts": 1,
+      "coeff": 2.0,
+      "id": "skill_id_19",
+      "increase": true,
+      "levelRequired": 13,
+      "name": "military_concentration",
+      "turns": 4,
+      "type": "attack"
+    },
+    {
+      "attempts": 1,
+      "condition": true,
+      "id": "skill_id_20",
+      "increase": true,
+      "levelRequired": 1,
+      "name": "incitement",
+      "turns": 5,
+      "type": "attack"
+    },
+    {
+      "attempts": 2,
+      "condition": true,
+      "id": "skill_id_21",
+      "increase": true,
+      "levelRequired": 5,
+      "name": "confidence",
+      "turns": 3,
+      "type": "attack"
+    },
+    {
+      "attempts": 1,
+      "coeff": 3.0,
+      "condition": true,
+      "id": "skill_id_22",
+      "increase": true,
+      "levelRequired": 14,
+      "name": "backup_baton",
+      "turns": 5,
+      "type": "attack"
+    },
+    {
+      "attempts": 1,
+      "id": "skill_id_23",
+      "levelRequired": 2,
+      "proprietarySkill": "stun",
+      "name": "trapping_baton"
+    },
+    {
+      "attempts": 2,
+      "id": "skill_id_24",
+      "levelRequired": 3,
+      "proprietarySkill": "kick",
+      "name": "head_kick"
+    },
+    {
+      "attempts": 4,
+      "coeff": 1.5,
+      "id": "skill_id_25",
+      "levelRequired": 6,
+      "permanent": true,
+      "name": "left_hook",
+      "type": "health"
+    },
+    {
+      "attempts": 2,
+      "coeff": 1.5,
+      "id": "skill_id_26",
+      "levelRequired": 7,
+      "permanent": true,
+      "name": "right_hook",
+      "turns": 5,
+      "type": "health"
+    },
+    {
+      "attempts": 1,
+      "coeff": 1.5,
+      "id": "skill_id_27",
+      "levelRequired": 10,
+      "name": "stomp",
+      "turns": 3,
+      "type": "defense"
+    },
+    {
+      "attempts": 1,
+      "condition": true,
+      "id": "skill_id_28",
+      "levelRequired": 9,
+      "name": "crush_strike",
+      "turns": 3,
+      "type": "defense"
+    },
+    {
+      "attempts": 1,
+      "coeff": 3.5,
+      "id": "skill_id_29",
+      "levelRequired": 13,
+      "permanent": true,
+      "name": "trick_with_baton",
+      "type": "health"
+    },
+    {
+      "attempts": 2,
+      "id": "skill_id_30",
+      "levelRequired": 1,
+      "permanent": true,
+      "name": "throw_thing",
+      "type": "health"
+    },
+    {
+      "attempts": 1,
+      "coeff": 0.3,
+      "condition": true,
+      "id": "skill_id_31",
+      "increase": true,
+      "levelRequired": 2,
+      "name": "concentration_pills",
+      "turns": 3,
+      "type": "skillpower"
+    },
+    {
+      "attempts": 1,
+      "coeff": 1.0,
+      "condition": true,
+      "id": "skill_id_32",
+      "increase": true,
+      "levelRequired": 14,
+      "name": "aiming_glasses",
+      "turns": 6,
+      "type": "skillpower"
+    },
+    {
+      "attempts": 1,
+      "beforeEnemyAttack": true,
+      "condition": true,
+      "id": "skill_id_33",
+      "levelRequired": 3,
+      "name": "bear_trap",
+      "turns": 4,
+      "type": "attack"
+    },
+    {
+      "attempts": 1,
+      "condition": true,
+      "id": "skill_id_34",
+      "levelRequired": 5,
+      "name": "snare",
+      "turns": 5,
+      "type": "defense"
+    },
+    {
+      "attempts": 1,
+      "beforeEnemyAttack": true,
+      "condition": true,
+      "id": "skill_id_35",
+      "levelRequired": 9,
+      "name": "smoke_screen",
+      "turns": 5,
+      "type": "skill"
+    },
+    {
+      "attempts": 1,
+      "coeff": 1.5,
+      "condition": true,
+      "id": "skill_id_36",
+      "increase": true,
+      "levelRequired": 13,
+      "name": "masterful_escape",
+      "turns": 2,
+      "type": "luck"
+    },
+    {
+      "attempts": 1,
+      "beforeEnemyAttack": true,
+      "beforeEnemySkill": true,
+      "condition": true,
+      "id": "skill_id_37",
+      "levelRequired": 7,
+      "name": "perfect_trick",
+      "turns": 5,
+      "type": "skillpower"
+    },
+    {
+      "attempts": 1,
+      "coeff": 2.5,
+      "id": "skill_id_38",
+      "levelRequired": 6,
+      "permanent": true,
+      "name": "perfect_trap",
+      "type": "health"
+    },
+    {
+      "attempts": 1,
+      "coeff": 3.0,
+      "id": "skill_id_39",
+      "levelRequired": 10,
+      "proprietarySkill": "stun",
+      "name": "strike_from_backup",
+      "turns": 4
+    },
+    {
+      "attempts": 1,
+      "coeff": 4.0,
+      "id": "skill_id_40",
+      "increase": true,
+      "levelRequired": 15,
+      "proprietarySkill": "reflect_damage",
+      "name": "ultimate_doctor",
+      "turns": 5
+    },
+    {
+      "attempts": 2,
+      "coeff": 5.0,
+      "id": "skill_id_41",
+      "increase": true,
+      "levelRequired": 15,
+      "proprietarySkill": "life_leech",
+      "name": "ultimate_soldier",
+      "turns": 1
+    },
+    {
+      "attempts": 1,
+      "coeff": 5.0,
+      "id": "skill_id_42",
+      "levelRequired": 15,
+      "proprietarySkill": "quick_reaction",
+      "name": "ultimate_policeman",
+      "turns": 5
+    },
+    {
+      "attempts": 1,
+      "coeff": 3.5,
+      "id": "skill_id_43",
+      "levelRequired": 15,
+      "proprietarySkill": "twice_attack",
+      "name": "ultimate_stalker",
+      "turns": 5
+    }
+  ]
+}

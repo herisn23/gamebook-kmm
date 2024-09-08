@@ -1,0 +1,108 @@
+{
+  "abilities": [
+    {
+      "id": "ability_1",
+      "level": 1,
+      "targets": [
+        "self",
+        "enemy"
+      ],
+      "utilization": [
+        "battle"
+      ],
+      "reserveMode": "battle",
+      "reserve": 5,
+      "config": [
+        {
+          "attribute": "health",
+          "duration": 5,
+          "multiplication": 0.5,
+          "baseValue": 2,
+          "algorithm": "standard",
+          "damageType": "Physique"
+        }
+      ],
+      "trigger": "manual"
+    },
+    {
+      "id": "ability_2",
+      "level": 1,
+      "targets": [
+        "self",
+        "enemy"
+      ],
+      "utilization": [
+        "battle"
+      ],
+      "reserveMode": "battle",
+      "reserve": 5,
+      "config": [
+        {
+          "attribute": "attack",
+          "duration": 5,
+          "multiplication": 0.5,
+          "baseValue": 2,
+          "algorithm": "standard",
+          "damageType": "Physique"
+        }
+      ],
+      "trigger": "threshold",
+      "threshold": {
+        "attribute": "health",
+        "value": 0.6
+      }
+    },
+    {
+      "id": "ability_3",
+      "level": 1,
+      "targets": [
+        "self",
+        "enemy"
+      ],
+      "utilization": [
+        "battle"
+      ],
+      "reserveMode": "battle",
+      "reserve": 5,
+      "config": [
+        {
+          "attribute": "attack",
+          "duration": 5,
+          "multiplication": 0.5,
+          "baseValue": 0,
+          "algorithm": "summon",
+          "damageType": "Physique",
+          "summon": {
+            "attributes": {
+              "health": 120,
+              "luck": 10,
+              "defense": 15,
+              "skill": 5,
+              "attack": 10,
+              "speed": 2,
+              "abilityPower": 30
+            },
+            "attributesPerLevel": {
+              "health": 5,
+              "luck": 1,
+              "defense": 1,
+              "skill": 1,
+              "attack": 1,
+              "speed": 1,
+              "abilityPower": 1
+            },
+            "abilities": [
+              "ability_2"
+            ],
+            "blockMode": "manual"
+          }
+        }
+      ],
+      "trigger": "threshold",
+      "threshold": {
+        "attribute": "health",
+        "value": 0.6
+      }
+    }
+  ]
+}

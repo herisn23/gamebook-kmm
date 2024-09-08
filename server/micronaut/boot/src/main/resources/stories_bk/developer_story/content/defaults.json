@@ -1,0 +1,13 @@
+{
+  "defaults": {
+    "ui": {
+      "inventory": true,
+      "theme": "Standard"
+    },
+    "luckBattleWinReduction": 0.8,
+    "luckBattleAvoidReduction": 0.2,
+    "attributes": {
+      "mode": "normal"
+    }
+  }
+}

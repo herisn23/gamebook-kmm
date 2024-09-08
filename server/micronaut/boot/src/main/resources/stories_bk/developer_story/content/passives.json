@@ -1,0 +1,35 @@
+{
+  "passives": [
+    {
+      "id": "passive_1",
+      "stack": true,
+      "algorithm": "standard",
+      "levels": [
+        {
+          "skillPoints": 5,
+          "attribute": "health",
+          "power": {
+            "value": 5,
+            "absolute": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "passive_2",
+      "stack": true,
+      "require": "passive_1",
+      "algorithm": "standard",
+      "levels": [
+        {
+          "skillPoints": 20,
+          "attribute": "attack",
+          "power": {
+            "value": 5,
+            "absolute": false
+          }
+        }
+      ]
+    }
+  ]
+}

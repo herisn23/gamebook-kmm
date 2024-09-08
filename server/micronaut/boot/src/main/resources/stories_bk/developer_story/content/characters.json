@@ -1,0 +1,100 @@
+{
+  "characters": [
+    {
+      "startSection": 1,
+      "id": "character_1",
+      "attributesPerLevel": {
+        "health": 20,
+        "attack": 8,
+        "abilityPower": 3,
+        "defense": 13,
+        "skill": 3,
+        "luck": 4,
+        "speed": 3
+      },
+      "attributes": {
+        "health": 150,
+        "attack": 30,
+        "abilityPower": 10,
+        "defense": 50,
+        "skill": 10,
+        "luck": 15,
+        "speed": 5
+      },
+      "passives": [
+        "passive_1"
+      ],
+      "abilities": [
+        "ability_1",
+        "ability_2"
+      ],
+      "items": [
+        "item_3",
+        "item_4"
+      ]
+    },
+    {
+      "startSection": 2,
+      "id": "character_2",
+      "attributesPerLevel": {
+        "health": 8,
+        "defense": 5,
+        "skill": 8,
+        "luck": 5,
+        "attack": 2,
+        "speed": 5,
+        "abilityPower": 8
+      },
+      "attributes": {
+        "health": 80,
+        "defense": 15,
+        "skill": 15,
+        "luck": 30,
+        "attack": 10,
+        "speed": 15,
+        "abilityPower": 30
+      },
+      "passives": [
+        "passive_1"
+      ],
+      "abilities": [
+        "ability_1",
+        "ability_2"
+      ],
+      "items": [
+        "item_2"
+      ]
+    },
+    {
+      "startSection": 3,
+      "id": "character_3",
+      "attributesPerLevel": {
+        "health": 10,
+        "defense": 3,
+        "skill": 8,
+        "luck": 4,
+        "attack": 45,
+        "speed": 10,
+        "abilityPower": 2
+      },
+      "attributes": {
+        "health": 100,
+        "defense": 10,
+        "skill": 40,
+        "luck": 10,
+        "attack": 80,
+        "speed": 50,
+        "abilityPower": 5
+      },
+      "passives": [
+        "passive_1"
+      ],
+      "abilities": [
+        "ability_3"
+      ],
+      "items": [
+        "item_3"
+      ]
+    }
+  ]
+}

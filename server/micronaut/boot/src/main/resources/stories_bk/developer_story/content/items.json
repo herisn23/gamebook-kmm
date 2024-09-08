@@ -1,0 +1,67 @@
+{
+  "items": [
+    {
+      "id": "item_1",
+      "algorithm": "consumable",
+      "consumableSetting": {
+        "duration": 0,
+        "base": false,
+        "mode": "buff",
+        "value": 0
+      }
+    },
+    {
+      "id": "item_2",
+      "algorithm": "consumable",
+      "consumableSetting": {
+        "mode": "reset"
+      }
+    },
+    {
+      "id": "item_3",
+      "algorithm": "equip",
+      "equipSetting": {
+        "slot": "head",
+        "passiveLevel": {
+          "passive": "passive_1",
+          "level": 1
+        }
+      },
+      "attributes": [
+        {
+          "type": "health",
+          "value": 20,
+          "absolute": true
+        }
+      ]
+    },
+    {
+      "id": "item_4",
+      "algorithm": "equip",
+      "equipSetting": {
+        "slot": "hand"
+      },
+      "resistances": [
+        {
+          "type": "fire",
+          "value": 0.5
+        }
+      ]
+    },
+    {
+      "id": "item_4",
+      "algorithm": "insignia",
+      "insigniaSetting": {
+        "mode": "xbBoost",
+        "value": 50
+      }
+    },
+    {
+      "id": "character_item_4",
+      "algorithm": "insignia",
+      "insigniaSetting": {
+        "mode": "mark"
+      }
+    }
+  ]
+}

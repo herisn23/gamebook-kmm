@@ -1,0 +1,106 @@
+{
+  "sections": [
+    {
+      "position": 1,
+      "text": "section_text_1",
+      "options": [
+        {
+          "id": 1,
+          "section": 2,
+          "text": "option_text_1_1"
+        },
+        {
+          "id": 2,
+          "section": 4,
+          "text": "option_text_1_3"
+        },
+        {
+          "id": 3,
+          "section": 3,
+          "disableWhenSelected": true,
+          "text": "option_text_1_2"
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "text": "section_text_2",
+      "luckEnabled": true,
+      "luckDefeatEnemies": false,
+      "enemies": [
+        {
+          "enemy": "enemy_1"
+        }
+      ],
+      "options": [
+        {
+          "id": 1,
+          "section": 3,
+          "text": "option_text_2_1"
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "text": "section_text_3",
+      "luckEnabled": true,
+      "luckDefeatEnemies": true,
+      "enemies": [
+        {
+          "enemy": "enemy_1"
+        }
+      ],
+      "options": [
+        {
+          "id": 1,
+          "section": 2,
+          "text": "option_text_3_1"
+        },
+        {
+          "id": 2,
+          "section": 1,
+          "text": "option_text_3_2"
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "text": "section_text_4",
+      "events": [
+        {
+          "type": "Experience",
+          "experienceSetting": {
+            "afterBattle": false,
+            "value": 20,
+            "multiplier": 0.5
+          }
+        },
+        {
+          "type": "SkillPoint",
+          "skillPointSetting": {
+            "afterBattle": false,
+            "value": 5
+          }
+        },
+        {
+          "type": "Condition",
+          "conditionSetting": {
+            "duration": 1,
+            "afterBattle": false,
+            "base": false,
+            "attribute": "health",
+            "cleanable": false,
+            "value": 5
+          }
+        }
+      ],
+      "options": [
+        {
+          "id": 1,
+          "section": 1,
+          "text": "option_text_4_1"
+        }
+      ]
+    }
+  ]
+}

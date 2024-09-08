@@ -1,0 +1,118 @@
+{
+  "characters": [
+    {
+      "startSection": 1,
+      "name": "ch_soldier",
+      "description": "dsc_soldier",
+      "primaryStat": "defense",
+      "stats": {
+        "health": 120,
+        "defense": 15,
+        "skill": 4,
+        "luck": 2,
+        "attack": 4,
+        "abilityPower": 1
+      },
+      "passives": [
+        {
+          "id": "passive_1",
+          "points": 5
+        }
+      ],
+      "abilities": [
+        "skill_id_10",
+        "skill_id_11",
+        "skill_id_12",
+        "skill_id_13",
+        "skill_id_14",
+        "skill_id_15",
+        "skill_id_16",
+        "skill_id_17",
+        "skill_id_18",
+        "skill_id_19",
+        "skill_id_41"
+      ]
+    },
+    {
+      "startSection": 0,
+      "name": "ch_doctor",
+      "description": "dsc_doctor",
+      "primaryStat": "health",
+      "stats": {
+        "health": 60,
+        "defense": 5,
+        "skill": 5,
+        "luck": 5,
+        "attack": 5,
+        "abilityPower": 4
+      },
+      "abilities": [
+        "skill_id_0",
+        "skill_id_1",
+        "skill_id_2",
+        "skill_id_3",
+        "skill_id_4",
+        "skill_id_5",
+        "skill_id_6",
+        "skill_id_7",
+        "skill_id_8",
+        "skill_id_9",
+        "skill_id_40"
+      ]
+    },
+    {
+      "startSection": 47,
+      "name": "ch_policeman",
+      "description": "dsc_policeman",
+      "primaryStat": "attack",
+      "stats": {
+        "health": 80,
+        "defense": 4,
+        "skill": 10,
+        "luck": 2,
+        "attack": 10,
+        "abilityPower": 2
+      },
+      "abilities": [
+        "skill_id_20",
+        "skill_id_21",
+        "skill_id_22",
+        "skill_id_23",
+        "skill_id_24",
+        "skill_id_25",
+        "skill_id_26",
+        "skill_id_27",
+        "skill_id_28",
+        "skill_id_29",
+        "skill_id_42"
+      ]
+    },
+    {
+      "startSection": 0,
+      "name": "ch_stalker",
+      "description": "dsc_stalker",
+      "primaryStat": "abilityPower",
+      "stats": {
+        "health": 50,
+        "defense": 2,
+        "skill": 2,
+        "luck": 10,
+        "attack": 2,
+        "abilityPower": 7
+      },
+      "abilities": [
+        "skill_id_30",
+        "skill_id_31",
+        "skill_id_32",
+        "skill_id_33",
+        "skill_id_34",
+        "skill_id_35",
+        "skill_id_36",
+        "skill_id_37",
+        "skill_id_38",
+        "skill_id_39",
+        "skill_id_43"
+      ]
+    }
+  ]
+}

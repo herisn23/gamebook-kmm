@@ -1,0 +1,100 @@
+[
+  {
+    "name": "e_livingdead",
+    "description": "",
+    "skillBase": "ATTACK",
+    "type": "NORMAL",
+    "stats": {
+      "abilityPower": 0,
+      "health": 5,
+      "defense": 2,
+      "skill": 2,
+      "luck": 1,
+      "attack": 2
+    }
+  },
+  {
+    "name": "e_nohander",
+    "description": "",
+    "skillBase": "ATTACK",
+    "type": "NORMAL",
+    "stats": {
+      "abilityPower": 0,
+      "health": 4,
+      "defense": 3,
+      "skill": 1,
+      "luck": 1,
+      "attack": 3
+    }
+  },
+  {
+    "name": "e_undead",
+    "description": "",
+    "skillBase": "ATTACK",
+    "type": "NORMAL",
+    "stats": {
+      "abilityPower": 0,
+      "health": 5,
+      "defense": 2,
+      "skill": 2,
+      "luck": 2,
+      "attack": 5
+    }
+  },
+  {
+    "name": "e_infected_cat",
+    "description": "",
+    "skillBase": "ATTACK",
+    "type": "NORMAL",
+    "stats": {
+      "abilityPower": 0,
+      "health": 9,
+      "defense": 2,
+      "skill": 1,
+      "luck": 1,
+      "attack": 5
+    }
+  },
+  {
+    "name": "e_zombie",
+    "description": "",
+    "skillBase": "ATTACK",
+    "type": "NORMAL",
+    "stats": {
+      "abilityPower": 0,
+      "health": 10,
+      "defense": 5,
+      "skill": 1,
+      "luck": 1,
+      "attack": 3
+    }
+  },
+  {
+    "name": "e_rotten_corpse",
+    "description": "",
+    "skillBase": "ATTACK",
+    "type": "NORMAL",
+    "stats": {
+      "abilityPower": 0,
+      "health": 6,
+      "defense": 0,
+      "skill": 1,
+      "luck": 2,
+      "attack": 3
+    }
+  },
+  {
+    "name": "e_dead_policeman",
+    "description": "",
+    "skillBase": "ATTACK",
+    "type": "NORMAL",
+    "stats": {
+      "abilityPower": 0,
+      "health": 5,
+      "defense": 1,
+      "skill": 1,
+      "luck": 1,
+      "attack": 3
+    }
+  }
+]

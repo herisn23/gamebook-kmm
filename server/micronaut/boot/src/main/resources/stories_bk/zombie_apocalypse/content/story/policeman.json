@@ -1,0 +1,518 @@
+[
+  {
+    "enemiesDefeatedText": "section47_enemy_text",
+    "luckDefeatEnemies": true,
+    "luckText": "section47_luck_text",
+    "position": 47,
+    "text": "﻿section47_text",
+    "enemies": [
+      {
+        "value": "dead_policeman"
+      }
+    ],
+    "options": [
+      {
+        "section": 48,
+        "text": "section47_option1_text"
+      }
+    ]
+  },
+  {
+    "enemiesDefeatedText": "section48_enemy_text",
+    "luckText": "section48_luck_text",
+    "position": 48,
+    "text": "section48_text",
+    "enemies": [
+      {
+        "value": "dead_policeman"
+      },
+      {
+        "value": "dead_policeman"
+      },
+      {
+        "value": "dead_policeman"
+      }
+    ],
+    "options": [
+      {
+        "section": 49,
+        "text": "section48_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 49,
+    "text": "section49_text",
+    "options": [
+      {
+        "section": 50,
+        "text": "section49_option1_text"
+      },
+      {
+        "section": 51,
+        "text": "section49_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 50,
+    "text": "section50_text",
+    "bonuses": [
+      {
+        "base": true,
+        "overflowed": true,
+        "type": "health",
+        "value": 15
+      }
+    ],
+    "options": [
+      {
+        "section": 52,
+        "text": "section50_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 51,
+    "text": "section51_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "type": "attack",
+        "value": 2
+      },
+      {
+        "overflowed": true,
+        "type": "skill",
+        "value": 1
+      }
+    ],
+    "options": [
+      {
+        "section": 53,
+        "text": "section51_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 52,
+    "text": "section52_text",
+    "options": [
+      {
+        "section": 54,
+        "text": "section52_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 53,
+    "text": "section53_text",
+    "options": [
+      {
+        "section": 54,
+        "text": "section53_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 54,
+    "text": "section54_text",
+    "options": [
+      {
+        "section": 55,
+        "text": "section54_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 55,
+    "text": "section55_text",
+    "options": [
+      {
+        "section": 56,
+        "text": "section55_option1_text"
+      },
+      {
+        "section": 0,
+        "stat": {
+          "key": "skill",
+          "value": 11
+        },
+        "text": "section55_option2_text"
+      },
+      {
+        "section": 0,
+        "stat": {
+          "key": "skill",
+          "value": 11
+        },
+        "ability": "skill_id_4",
+        "text": "section55_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 56,
+    "text": "section56_text",
+    "options": [
+      {
+        "section": 57,
+        "text": "section56_option1_text"
+      },
+      {
+        "section": 0,
+        "text": "section56_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 57,
+    "text": "section57_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "type": "luck",
+        "value": 1
+      }
+    ],
+    "options": [
+      {
+        "section": 58,
+        "text": "section57_option1_text"
+      }
+    ]
+  },
+  {
+    "alreadyVisitedText": "section58_visited_text",
+    "position": 58,
+    "text": "section58_text",
+    "options": [
+      {
+        "section": 59,
+        "text": "section58_option1_text"
+      },
+      {
+        "section": 65,
+        "text": "section58_option2_text"
+      }
+    ]
+  },
+  {
+    "alreadyVisitedText": "section59_visited_text",
+    "position": 59,
+    "text": "section59_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "type": "defense",
+        "value": 1
+      }
+    ],
+    "options": [
+      {
+        "section": 58,
+        "text": "section59_option1_text"
+      },
+      {
+        "disableWhenSelected": true,
+        "section": 60,
+        "text": "section59_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 60,
+    "text": "section60_text",
+    "options": [
+      {
+        "section": 61,
+        "text": "section_escalator_1th"
+      },
+      {
+        "section": 62,
+        "text": "section_escalator_2th"
+      },
+      {
+        "section": 63,
+        "text": "section_escalator_3th"
+      },
+      {
+        "section": 64,
+        "text": "section_escalator_4th"
+      }
+    ]
+  },
+  {
+    "position": 61,
+    "text": "section61_text",
+    "options": [
+      {
+        "section": 62,
+        "text": "section_escalator_2th"
+      },
+      {
+        "section": 63,
+        "text": "section_escalator_3th"
+      },
+      {
+        "section": 64,
+        "text": "section_escalator_4th"
+      }
+    ]
+  },
+  {
+    "enemiesDefeatedText": "section62_enemy_text",
+    "luckText": "section62_luck_text",
+    "position": 62,
+    "text": "section62_text",
+    "enemies": [
+      {
+        "value": "zombie"
+      },
+      {
+        "value": "zombie"
+      },
+      {
+        "value": "zombie"
+      }
+    ],
+    "options": [
+      {
+        "section": 63,
+        "text": "section_escalator_3th"
+      },
+      {
+        "section": 64,
+        "text": "section_escalator_4th"
+      }
+    ]
+  },
+  {
+    "position": 63,
+    "text": "section63_text",
+    "options": [
+      {
+        "section": 64,
+        "text": "section_escalator_4th"
+      }
+    ]
+  },
+  {
+    "position": 64,
+    "text": "section64_text",
+    "options": [
+      {
+        "section": 59,
+        "text": "section64_option1_text"
+      }
+    ]
+  },
+  {
+    "comment": "policeman with doctor meeting",
+    "enemiesDefeatedText": "section65_enemies_defeated_text",
+    "position": 65,
+    "text": "section65_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "health",
+        "value": 30
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "attack",
+        "value": 4
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "skill",
+        "value": 5
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "defense",
+        "value": 2
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "luck",
+        "value": 5
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "skillpower",
+        "value": 3
+      },
+      {
+        "base": true,
+        "state": "after_fight",
+        "type": "skillpower",
+        "value": 1
+      },
+      {
+        "state": "after_fight",
+        "type": "health",
+        "value": 30
+      }
+    ],
+    "enemies": [
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "nohander"
+      },
+      {
+        "value": "rotten_corpse"
+      },
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "zombie"
+      },
+      {
+        "value": "brain_eater"
+      }
+    ],
+    "options": [
+      {
+        "section": 40,
+        "text": "section65_option_text"
+      }
+    ]
+  },
+  {
+    "comment": "policeman with soldier meeting",
+    "position": 66,
+    "text": "section66_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "health",
+        "value": 80
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "defense",
+        "value": 10
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "attack",
+        "value": 4
+      },
+      {
+        "base": true,
+        "state": "after_fight",
+        "type": "health",
+        "value": 50
+      },
+      {
+        "state": "after_fight",
+        "type": "defense",
+        "value": 5
+      }
+    ],
+    "enemies": [
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "nohander"
+      },
+      {
+        "value": "rotten_corpse"
+      },
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "zombie"
+      },
+      {
+        "value": "brain_eater"
+      }
+    ]
+  },
+  {
+    "comment": "policeman with stalker meeting",
+    "position": 67,
+    "text": "section67_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "health",
+        "value": 10
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "skill",
+        "value": 5
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "luck",
+        "value": 10
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "skillpower",
+        "value": 5
+      },
+      {
+        "base": true,
+        "state": "after_fight",
+        "type": "luck",
+        "value": 5
+      },
+      {
+        "state": "after_fight",
+        "type": "skillpower",
+        "value": 3
+      }
+    ],
+    "enemies": [
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "nohander"
+      },
+      {
+        "value": "rotten_corpse"
+      },
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "zombie"
+      },
+      {
+        "value": "brain_eater"
+      }
+    ]
+  }
+]

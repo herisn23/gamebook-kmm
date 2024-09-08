@@ -1,0 +1,10 @@
+{
+  "story": [
+    {
+      "include": "story/policeman.json"
+    },
+    {
+      "include": "story/soldier.json"
+    }
+  ]
+}

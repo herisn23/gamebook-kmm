@@ -1,0 +1,13 @@
+{
+  "enemies": [
+    {
+      "include": "enemies/bosses.json"
+    },
+    {
+      "include": "enemies/minions.json"
+    },
+    {
+      "include": "enemies/mobs.json"
+    }
+  ]
+}

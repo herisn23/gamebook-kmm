@@ -1,0 +1,901 @@
+[
+  {
+    "alreadyVisitedText": "section1_visited_text",
+    "position": 1,
+    "text": "﻿section1_text",
+    "options": [
+      {
+        "section": 2,
+        "text": "section1_option1_text"
+      },
+      {
+        "section": 13,
+        "text": "section1_option2_text"
+      },
+      {
+        "disableWhenSelected": true,
+        "section": 30,
+        "text": "section1_option3_text"
+      }
+    ]
+  },
+  {
+    "alreadyVisitedText": "section2_visited_text",
+    "enemiesDefeatedText": "section2_enemy_text",
+    "luckText": "section2_luck_text",
+    "position": 2,
+    "text": "section2_text",
+    "enemies": [
+      {
+        "value": "living_dead"
+      }
+    ],
+    "options": [
+      {
+        "section": 3,
+        "text": "section2_option1_text"
+      },
+      {
+        "section": 1,
+        "text": "section2_option_barracks_text"
+      }
+    ]
+  },
+  {
+    "position": 3,
+    "text": "section3_text",
+    "options": [
+      {
+        "section": 4,
+        "text": "section3_option1_text"
+      },
+      {
+        "section": 1,
+        "text": "section2_option_barracks_text"
+      }
+    ]
+  },
+  {
+    "enemiesDefeatedText": "section4_enemy_text",
+    "luckDefeatEnemies": true,
+    "luckText": "section4_luck_text",
+    "position": 4,
+    "text": "section4_text",
+    "enemies": [
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "nohander"
+      }
+    ],
+    "options": [
+      {
+        "section": 5,
+        "text": "section4_option1_text"
+      },
+      {
+        "section": 1,
+        "text": "section2_option_barracks_text"
+      }
+    ]
+  },
+  {
+    "alreadyVisitedText": "section5_visited_text",
+    "position": 5,
+    "text": "section5_text",
+    "bonuses": [
+      {
+        "debuff": true,
+        "type": "health",
+        "value": 3
+      },
+      {
+        "overflowed": true,
+        "type": "luck",
+        "value": 1
+      }
+    ],
+    "options": [
+      {
+        "disableWhenSelected": true,
+        "section": 6,
+        "text": "section5_option1_text"
+      },
+      {
+        "section": 8,
+        "text": "section5_option2_text"
+      },
+      {
+        "disableWhenSelected": true,
+        "luckAspect": true,
+        "section": 9,
+        "text": "section5_option3_text"
+      }
+    ]
+  },
+  {
+    "position": 6,
+    "text": "section6_text",
+    "options": [
+      {
+        "section": 5,
+        "text": "section6_option1_text"
+      },
+      {
+        "section": 7,
+        "text": "section6_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 7,
+    "text": "section7_text",
+    "options": [
+      {
+        "section": 19,
+        "text": "section7_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 8,
+    "text": "section8_text",
+    "bonuses": [
+      {
+        "type": "health",
+        "value": 1
+      }
+    ],
+    "options": [
+      {
+        "section": 10,
+        "text": "section8_option1_text"
+      },
+      {
+        "section": 12,
+        "text": "section8_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 9,
+    "text": "section9_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "type": "skill",
+        "value": 1
+      }
+    ],
+    "options": [
+      {
+        "section": 5,
+        "text": "section9_option1_text"
+      }
+    ]
+  },
+  {
+    "alreadyVisitedText": "section10_visited_text",
+    "position": 10,
+    "text": "section10_text",
+    "options": [
+      {
+        "section": 38,
+        "text": "section10_option1_text"
+      },
+      {
+        "disableWhenSelected": true,
+        "luckAspect": true,
+        "section": 11,
+        "text": "section10_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 11,
+    "text": "section11_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "type": "defense",
+        "value": 1
+      }
+    ],
+    "options": [
+      {
+        "section": 10,
+        "text": "section11_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 12,
+    "text": "section12_text",
+    "options": [
+      {
+        "section": 29,
+        "text": "section12_option1_text"
+      }
+    ]
+  },
+  {
+    "alreadyVisitedText": "section13_visited_text",
+    "enemiesDefeatedText": "section13_enemy_text",
+    "luckText": "section13_luck_text",
+    "position": 13,
+    "text": "section13_text",
+    "enemies": [
+      {
+        "value": "undead"
+      },
+      {
+        "value": "undead"
+      }
+    ],
+    "options": [
+      {
+        "section": 20,
+        "text": "section13_option1_text"
+      },
+      {
+        "section": 14,
+        "text": "section13_option2_text"
+      }
+    ]
+  },
+  {
+    "alreadyVisitedText": "section14_visited_text",
+    "position": 14,
+    "text": "section14_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "type": "attack",
+        "value": 2
+      }
+    ],
+    "options": [
+      {
+        "section": 13,
+        "text": "section14_option1_text"
+      },
+      {
+        "section": 24,
+        "text": "section14_option3_text"
+      },
+      {
+        "disableWhenSelected": true,
+        "section": 15,
+        "text": "section14_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 15,
+    "text": "section15_text",
+    "options": [
+      {
+        "section": 17,
+        "text": "section15_option1_text"
+      },
+      {
+        "section": 16,
+        "text": "section15_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 16,
+    "text": "section16_text",
+    "options": [
+      {
+        "section": 14,
+        "text": "sg_continue"
+      }
+    ]
+  },
+  {
+    "position": 17,
+    "text": "section17_text",
+    "options": [
+      {
+        "section": 18,
+        "text": "section17_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 18,
+    "text": "section18_text",
+    "bonuses": [
+      {
+        "debuff": true,
+        "type": "health",
+        "value": 5
+      },
+      {
+        "debuff": true,
+        "type": "attack",
+        "value": 1
+      }
+    ],
+    "options": [
+      {
+        "section": 41,
+        "text": "section18_option1_text"
+      },
+      {
+        "section": 19,
+        "text": "section18_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 20,
+    "text": "section20_text",
+    "options": [
+      {
+        "section": 21,
+        "text": "section20_option1_text"
+      },
+      {
+        "section": 22,
+        "text": "section20_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 21,
+    "text": "section21_text",
+    "options": [
+      {
+        "section": 23,
+        "text": "section21_option1_text"
+      }
+    ]
+  },
+  {
+    "enemiesDefeatedText": "section22_enemy_text",
+    "luckDefeatEnemies": true,
+    "luckText": "section22_luck_text",
+    "position": 22,
+    "text": "section22_text",
+    "enemies": [
+      {
+        "value": "infected_cat"
+      }
+    ],
+    "options": [
+      {
+        "section": 23,
+        "text": "section22_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 23,
+    "text": "section23_text",
+    "options": [
+      {
+        "section": 19,
+        "text": "section23_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 24,
+    "text": "section24_text",
+    "options": [
+      {
+        "section": 25,
+        "text": "section24_option1_text"
+      },
+      {
+        "section": 28,
+        "text": "section24_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 25,
+    "text": "section25_text",
+    "bonuses": [
+      {
+        "type": "health",
+        "value": 2
+      }
+    ],
+    "options": [
+      {
+        "section": 26,
+        "text": "section25_option1_text"
+      },
+      {
+        "section": 27,
+        "text": "section25_option2_text"
+      }
+    ]
+  },
+  {
+    "enemiesDefeatedText": "section26_enemy_text",
+    "luckText": "section26_luck_text",
+    "position": 26,
+    "text": "section26_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "state": "after_fight",
+        "type": "attack",
+        "value": 1
+      }
+    ],
+    "enemies": [
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "zombie"
+      }
+    ],
+    "options": [
+      {
+        "section": 28,
+        "text": "section26_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 27,
+    "text": "section27_text",
+    "bonuses": [
+      {
+        "debuff": true,
+        "overflowed": true,
+        "type": "luck",
+        "value": 1
+      }
+    ],
+    "options": [
+      {
+        "section": 28,
+        "text": "section27_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 28,
+    "text": "section28_text",
+    "options": [
+      {
+        "section": 38,
+        "text": "section28_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 30,
+    "text": "section30_text",
+    "options": [
+      {
+        "section": 31,
+        "text": "section30_option1_text"
+      },
+      {
+        "section": 33,
+        "text": "section30_option2_text"
+      },
+      {
+        "luckAspect": true,
+        "section": 32,
+        "text": "section30_option3_text"
+      }
+    ]
+  },
+  {
+    "position": 31,
+    "text": "section31_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "type": "luck",
+        "value": 1
+      }
+    ],
+    "options": [
+      {
+        "section": 1,
+        "text": "sg_continue"
+      }
+    ]
+  },
+  {
+    "position": 32,
+    "text": "section32_text",
+    "options": [
+      {
+        "section": 36,
+        "text": "section32_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 33,
+    "text": "section33_text",
+    "options": [
+      {
+        "section": 34,
+        "text": "section33_option1_text"
+      },
+      {
+        "section": 35,
+        "text": "section33_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 34,
+    "text": "section34_text",
+    "bonuses": [
+      {
+        "debuff": true,
+        "type": "health",
+        "value": 1
+      }
+    ],
+    "options": [
+      {
+        "section": 36,
+        "text": "section34_option1_text"
+      }
+    ]
+  },
+  {
+    "enemiesDefeatedText": "section35_enemy_text",
+    "luckText": "section35_luck_text",
+    "position": 35,
+    "text": "section35_text",
+    "enemies": [
+      {
+        "value": "rotten_corpse"
+      }
+    ],
+    "options": [
+      {
+        "section": 36,
+        "text": "section35_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 36,
+    "text": "section36_text",
+    "options": [
+      {
+        "section": 37,
+        "text": "section36_option1_text"
+      },
+      {
+        "section": 38,
+        "text": "section36_option2_text"
+      }
+    ]
+  },
+  {
+    "enemiesDefeatedText": "section37_enemy_text",
+    "luckDefeatEnemies": true,
+    "luckText": "section37_luck_text",
+    "position": 37,
+    "text": "section37_text",
+    "bonuses": [
+      {
+        "debuff": true,
+        "state": "before_fight",
+        "type": "health",
+        "value": 5
+      },
+      {
+        "overflowed": true,
+        "state": "before_fight",
+        "type": "damage",
+        "value": 1
+      },
+      {
+        "overflowed": true,
+        "state": "after_fight",
+        "type": "skill",
+        "value": 1
+      }
+    ],
+    "enemies": [
+      {
+        "value": "rotten_merchant"
+      }
+    ],
+    "options": [
+      {
+        "section": 38,
+        "text": "section37_option1_text"
+      }
+    ]
+  },
+  {
+    "position": 38,
+    "text": "section38_text",
+    "options": [
+      {
+        "section": 41,
+        "text": "section38_option1_text"
+      },
+      {
+        "section": 39,
+        "text": "section38_option2_text"
+      }
+    ]
+  },
+  {
+    "position": 41,
+    "text": "section41_text",
+    "options": [
+      {
+        "section": 29,
+        "text": "section41_option1_text"
+      }
+    ]
+  },
+  {
+    "comment": "soldier with doctor meeting",
+    "enemiesDefeatedText": "section19_enemy_text",
+    "position": 19,
+    "text": "section19_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "health",
+        "value": 50
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "attack",
+        "value": 4
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "skill",
+        "value": 2
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "defense",
+        "value": 4
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "luck",
+        "value": 2
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "skillpower",
+        "value": 3
+      },
+      {
+        "base": true,
+        "state": "after_fight",
+        "type": "health",
+        "value": 20
+      },
+      {
+        "base": true,
+        "state": "after_fight",
+        "type": "skillpower",
+        "value": 1
+      }
+    ],
+    "enemies": [
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "nohander"
+      },
+      {
+        "value": "rotten_corpse"
+      },
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "zombie"
+      },
+      {
+        "value": "brain_eater"
+      }
+    ],
+    "options": [
+      {
+        "section": 40,
+        "text": "section19_option1_text"
+      }
+    ]
+  },
+  {
+    "comment": "soldier with policeman meeting",
+    "enemiesDefeatedText": "section39_enemy_text",
+    "position": 39,
+    "text": "section39_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "health",
+        "value": 40
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "attack",
+        "value": 5
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "skill",
+        "value": 10
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "defense",
+        "value": 4
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "luck",
+        "value": 2
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "skillpower",
+        "value": 1
+      },
+      {
+        "base": true,
+        "state": "after_fight",
+        "type": "attack",
+        "value": 1
+      },
+      {
+        "base": true,
+        "state": "after_fight",
+        "type": "skill",
+        "value": 2
+      }
+    ],
+    "enemies": [
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "nohander"
+      },
+      {
+        "value": "rotten_corpse"
+      },
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "zombie"
+      },
+      {
+        "value": "brain_eater"
+      }
+    ],
+    "options": [
+      {
+        "section": 40,
+        "text": "section39_option1_text"
+      }
+    ]
+  },
+  {
+    "comment": "soldier with stalker meeting",
+    "enemiesDefeatedText": "section29_enemy_text",
+    "position": 29,
+    "text": "section29_text",
+    "bonuses": [
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "health",
+        "value": 30
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "attack",
+        "value": 4
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "skill",
+        "value": 3
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "defense",
+        "value": 2
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "luck",
+        "value": 10
+      },
+      {
+        "overflowed": true,
+        "permanent": false,
+        "type": "skillpower",
+        "value": 2
+      },
+      {
+        "base": true,
+        "state": "after_fight",
+        "type": "health",
+        "value": 5
+      },
+      {
+        "base": true,
+        "state": "after_fight",
+        "type": "luck",
+        "value": 5
+      }
+    ],
+    "enemies": [
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "nohander"
+      },
+      {
+        "value": "rotten_corpse"
+      },
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "living_dead"
+      },
+      {
+        "value": "zombie"
+      },
+      {
+        "value": "brain_eater"
+      }
+    ],
+    "options": [
+      {
+        "section": 40,
+        "text": "section29_option1_text"
+      }
+    ]
+  }
+]

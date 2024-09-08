@@ -1,0 +1,8 @@
+{
+  "passives": [
+    {
+      "id": "passive_1",
+      "baseValue": 5
+    }
+  ]
+}

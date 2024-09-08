@@ -1,0 +1,14 @@
+{
+  "files": [
+    "content/abilities.json",
+    "content/passives.json",
+    "content/characters.json",
+    "content/enemies.json",
+    "content/items.json",
+    "content/sections.json",
+    "content/defaults.json"
+  ],
+  "texts": {
+    "cs": "cs.json"
+  }
+}

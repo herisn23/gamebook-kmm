@@ -1,0 +1,17 @@
+[
+  {
+    "name": "e_brain_eater",
+    "description": "",
+    "skillBase": "ATTACK",
+    "type": "BOSS",
+    "baseExp": 20,
+    "stats": {
+      "abilityPower": 1,
+      "health": 40,
+      "defense": 5,
+      "skill": 5,
+      "luck": 5,
+      "attack": 6
+    }
+  }
+]
