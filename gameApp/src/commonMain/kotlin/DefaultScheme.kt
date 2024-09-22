@@ -53,7 +53,7 @@ val defaultColors: ColorScheme =
 val defaultBackgroundColor = Color.Black.copy(alpha = 0.5f)
 
 
-val defaultRoundRadius = 15.dp
+val defaultRoundRadius = 10.dp
 
 val defaultRoundedShape = RoundedCornerShape(defaultRoundRadius)
 

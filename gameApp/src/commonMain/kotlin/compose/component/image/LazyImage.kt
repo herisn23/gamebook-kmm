@@ -22,7 +22,8 @@ import core.remember.lazyRemember
 fun LazyImage(
     defaultImage: Painter? = null,
     imageScale: ContentScale = ContentScale.None,
-    modifier: BoxScope.() -> Modifier = { Modifier },
+    imageModifier: BoxScope.() -> Modifier = { Modifier },
+    boxModifier: Modifier = Modifier,
     opacity: Float = 1f,
     animationDuration: Int = 100,
     imageSource: suspend () -> Painter?,
@@ -38,7 +39,7 @@ fun LazyImage(
         animationSpec = tween(animationDuration)
     )
     Box(
-        modifier = Modifier.run {
+        modifier = boxModifier.run {
             if (image != null) {
                 background(Color.Black)
             } else this
@@ -50,7 +51,7 @@ fun LazyImage(
             fun targetImage(bitmap: Painter, alpha: Float) =
                 BackgroundImage(
                     bitmap,
-                    modifier().alpha(alpha),
+                    imageModifier().alpha(alpha),
                     imageScale = imageScale
                 ) { }
             if (defaultImage != null) {

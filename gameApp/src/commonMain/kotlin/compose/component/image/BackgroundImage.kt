@@ -11,6 +11,7 @@ import androidx.compose.ui.layout.ContentScale
 import gamebook.gameapp.generated.resources.Res
 import gamebook.gameapp.generated.resources.main_background
 import org.jetbrains.compose.resources.painterResource
+import rp
 
 @Composable
 fun BackgroundImage(
@@ -33,4 +34,4 @@ fun BackgroundImage(
 
 @Composable
 fun MainBackgroundImage(content: @Composable BoxScope.() -> Unit) =
-    BackgroundImage(painterResource(Res.drawable.main_background), content = content)
+    BackgroundImage(rp { main_background }, content = content)

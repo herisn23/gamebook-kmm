@@ -29,6 +29,7 @@ import core.http.sac
 import org.jetbrains.compose.resources.painterResource
 import painter
 import core.story.name
+import rp
 
 @Composable
 fun StoryTitleView(
@@ -75,7 +76,7 @@ fun StoryTitleView(
         innerContent()
     } else {
         LazyImage(
-            painterResource(Res.drawable.story_default),
+            rp { story_default },
             opacity = .7f,
             animationDuration = 500,
             imageScale = ContentScale.Crop,

@@ -41,18 +41,18 @@ import core.story.loadStory
 import core.story.startGameText
 import cz.roldy.gb.story.localization.Genus
 import engine.pickLanguage
-import t
+import rt
 import compose.component.Loader
 
 data object StoryPreparation : Screen<Pair<StoryMetadata, Painter>>
 
 @Composable
-fun StoryCharacterSelectionView(metadata: StoryMetadata, onStart: (StoryInGameDefaults) -> Unit) {
+fun StoryCharacterSelectionView(metadata: StoryMetadata, onStart: (StoryScreenDefaults) -> Unit) {
     Loader(
         null,
         { this != null },
         { loadStory(metadata) },
-        errorButtonText = t { error_retry },
+        errorButtonText = rt { error_retry },
         modifier = Modifier.fillMaxSize()
     ) { story ->
         story!!
@@ -68,7 +68,7 @@ fun StoryCharacterSelectionView(metadata: StoryMetadata, onStart: (StoryInGameDe
                     StoryCharacterView(
                         locale, story, it
                     ) {
-                        onStart(StoryInGameDefaults(story, it, Genus.Masculine))
+                        onStart(StoryScreenDefaults(story, it, Genus.Masculine))
                     }
                 }
             }
@@ -99,7 +99,7 @@ fun StoryPreparationScreen(
     metadata: StoryMetadata,
     image: Painter,
     onBack: () -> Unit,
-    onStart: (StoryInGameDefaults) -> Unit
+    onStart: (StoryScreenDefaults) -> Unit
 ) {
     Column(Modifier.fillMaxSize().padding(ScreenPadding)) {
         Card(

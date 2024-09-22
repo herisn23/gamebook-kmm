@@ -8,8 +8,7 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-sealed interface StringHandler {
-}
+sealed interface StringHandler
 
 @Serializable
 sealed interface LocalizedStringHandler : StringHandler

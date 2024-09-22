@@ -1,8 +1,43 @@
 sections:
   # section 0
-  - id: section_0
-    position: 0
+  - id: 0
+    visitedText:
+      key: section_0_visited_text
+      handler: !<simple>
+    text:
+      key: section_0_text
+      handler: !<simple>
+    options:
+      - id: 0
+        text:
+          key: section_0_option_0_text
+          handler: !<simple>
+        section: 1
+      - id: 1
+        text:
+          key: section_0_option_0_text
+          handler: !<simple>
+        section: 1
 
   # section 1
-  - id: section_1
-    position: 1
+  - id: 1
+    text:
+      key: section_1_text
+      handler: !<simple>
+    options:
+      - id: 0
+        text:
+          key: section_1_option_0_text
+          handler: !<simple>
+        section: 2
+  # section 2
+  - id: 2
+    text:
+      key: section_2_text
+      handler: !<simple>
+    options:
+      - id: 0
+        text:
+          key: section_2_option_0_text
+          handler: !<simple>
+        section: 0

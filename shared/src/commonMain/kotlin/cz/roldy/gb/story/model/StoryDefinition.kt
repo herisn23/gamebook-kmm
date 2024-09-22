@@ -10,4 +10,7 @@ data class StoryDefinition(
     val defaults: StoryDefaults,
     val sections: List<StorySection>,
     val characters: List<StoryCharacter>
-)
+) {
+    fun findSection(id: Int) =
+        sections.first { it.id == id }
+}

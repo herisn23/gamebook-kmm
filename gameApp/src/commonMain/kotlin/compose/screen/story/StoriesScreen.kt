@@ -34,11 +34,11 @@ import gamebook.gameapp.generated.resources.error_retry
 import gamebook.gameapp.generated.resources.stories
 import gamebook.gameapp.generated.resources.story_default
 import org.jetbrains.compose.resources.stringResource
-import p
+import rp
 import compose.router.Screen
 import compose.router.ScreenTransition
 import core.story.loadStories
-import t
+import rt
 import titleFont
 import compose.component.Loader
 
@@ -71,7 +71,7 @@ fun StoriesScreen(
             emptyList(),
             { isNotEmpty() },
             { loadStories() },
-            errorButtonText = t { error_retry },
+            errorButtonText = rt { error_retry },
             contentTransition = transition,
             errorTransition = transition,
             loadingTransition = transition
@@ -85,7 +85,7 @@ fun StoriesScreen(
             ) {
                 items(stories) { story ->
                     val image = remember { Ref<Painter>() }
-                    val defaultImage = p { story_default }
+                    val defaultImage = rp { story_default }
                     val pos = remember { Ref<LayoutCoordinates>() }
                     Card(
                         onClick = {

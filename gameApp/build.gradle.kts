@@ -135,25 +135,29 @@ buildkonfig {
     packageName = "cz.roldy.gb.config"
 
     val apiUrlPropertyName = "API_URL"
-    val httpLoggingEnabled = "HTTP_LOGGING_ENABLED"
+    val httpLoggingEnabledPropName = "HTTP_LOGGING_ENABLED"
+    val storyDevModePropName = "STORY_DEV_MODE"
 
     val apiUrlLocalhostAndroid: String by project
     val apiUrlLocalhost: String by project
     val apiUrlStage: String by project
     val apiUrlRelease: String by project
+    val storyDevMode: String by project
 
     defaultConfigs {
         buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlRelease)
-        buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabled, "false")
+        buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabledPropName, "false")
+        buildConfigField(FieldSpec.Type.BOOLEAN, storyDevModePropName, "false")
     }
     defaultConfigs("dev") {
-        buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabled, "true")
+        buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabledPropName, "true")
         buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlLocalhost)
+        buildConfigField(FieldSpec.Type.BOOLEAN, storyDevModePropName, storyDevMode)
     }
 
     defaultConfigs("stage") {
         buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlStage)
-        buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabled, "true")
+        buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabledPropName, "true")
     }
     targetConfigs("dev") {
         create("android") {

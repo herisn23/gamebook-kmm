@@ -9,10 +9,3 @@ data class LocalizedString(
     val key: String,
     val handler: LocalizedStringHandler
 )
-
-operator fun LocalizedStory.get(
-    locale: String,
-    key: String,
-    defaultText: String = "__${locale}__${key}__"
-) =
-    localization[locale]?.get(key) ?: defaultText

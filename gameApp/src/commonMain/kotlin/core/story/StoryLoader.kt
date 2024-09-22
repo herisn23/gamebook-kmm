@@ -12,7 +12,7 @@ import cz.roldy.gb.story.SectionsApiPart
 import cz.roldy.gb.story.StoryApiPart
 import cz.roldy.gb.story.model.Story
 import cz.roldy.gb.story.model.StoryDefinition
-import cz.roldy.gb.story.model.StoryLocalization
+import cz.roldy.gb.story.model.I18NSource
 import cz.roldy.gb.story.model.StoryMetadata
 import cz.roldy.gb.story.model.api.StoryCharacters
 import cz.roldy.gb.story.model.api.StoryDefaults
@@ -57,11 +57,11 @@ suspend fun loadStory(metadata: StoryMetadata): Story = coroutineScope {
             }
         }
     ).let { (definition, localization) ->
-        Story(definition as StoryDefinition, metadata, localization as StoryLocalization)
+        Story(definition as StoryDefinition, metadata, localization as I18NSource)
     }
 }
 
-private val YamlNode.storyLocalization: StoryLocalization
+private val YamlNode.storyLocalization: I18NSource
     get() =
         yamlMap.entries.map { (messageKey, localization) ->
             messageKey.content to localization.yamlMap.entries.map { (locale, text) ->

@@ -5,7 +5,7 @@ import androidx.compose.ui.text.intl.Locale
 import cz.roldy.gb.story.model.StoryMetadata
 import cz.roldy.gb.story.model.get
 import gamebook.gameapp.generated.resources.continue_
-import t
+import rt
 
 
 val StoryMetadata.name get() = this["name", Locale.current.language]
@@ -13,4 +13,4 @@ val StoryMetadata.desc get() = this["desc", Locale.current.language]
 
 val StoryMetadata.startGameText
     @Composable
-    get() = this["startGameText", Locale.current.language, t { continue_ }]
+    get() = this["startGameText", Locale.current.language, rt { continue_ }]

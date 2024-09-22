@@ -1,39 +1,34 @@
 package engine
 
-import androidx.compose.ui.text.intl.Locale
 import cz.roldy.gb.story.localization.Genus
 import cz.roldy.gb.story.localization.IStoryLocalizedContext
-import cz.roldy.gb.story.localization.StringProvider
-import cz.roldy.gb.story.localization.translate
 import cz.roldy.gb.story.model.Story
+import cz.roldy.gb.story.model.api.StoryCharacter
+import cz.roldy.gb.story.model.api.StorySection
+import engine.progress.SectionProgress
+import engine.progress.StoryProgress
+
 
 class StoryEngine(
+    val progress: StoryProgress,
+    val state: StateDelegate,
     override val story: Story,
     override val genus: Genus,
-    override val locale: () -> String
+    override val locale: () -> String,
 ) : IStoryLocalizedContext {
 
-    /**
-     * This function serves for localize Localized strings
-     */
-    fun t(block: StringProvider): String =
-        block.translate(this)
-}
+    val currentSection: StorySection
+        get() = state.section.value
 
 
-fun Story.pickLanguage() =
-    pickLanguage(Locale.current.language)
-
-fun Story.pickLanguage(selected: String) =
-    when (supportedLanguages.contains(selected)) {
-        true -> selected
-        false -> {
-            //if selected language is not supported try pick Czech
-            if (supportedLanguages.contains("cs")) {
-                "cs"
-            } else {
-                //if Czech language is not supported fallback to English
-                "en"
-            }
-        }
+    fun nextSection(id:Int, block: (SectionProgress?) -> SectionProgress) {
+        progress.addSection(id, block)
+        state.section.value = story.definition.findSection(id)
     }
+
+//    var section: Int
+//        get() = state.section.value.id
+//        set(value) {
+//            state.section.value = story.definition.findSection(value)
+//        }
+}

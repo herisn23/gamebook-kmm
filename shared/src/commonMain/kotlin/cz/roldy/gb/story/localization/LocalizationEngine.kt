@@ -20,10 +20,10 @@ data class LocalizedStringProxy(
     val argumentDelegate: ArgumentResolver? = null
 )
 
-typealias StringProvider = StoryDefinition.() -> LocalizedStringProxy
+typealias StringProvider<T> = T.() -> LocalizedStringProxy
 
-fun <T : IStoryLocalizedContext> StringProvider.translate(engine: T): String =
-    engine.story.definition.this().let { proxy ->
+fun <T : IStoryLocalizedContext> StringProvider<T>.translate(engine: T): String =
+    this(engine).let { proxy ->
         when (val loc = proxy.localizedString.handler) {
             is Simple -> proxy.simple(engine)
             is Selection -> proxy.selection(engine, loc)

@@ -7,9 +7,9 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun t(block: Res.string.() -> StringResource): String =
+fun rt(block: Res.string.() -> StringResource): String =
     stringResource(Res.string.block())
 
 @Composable
-fun p(block: Res.drawable.() -> DrawableResource): Painter =
+fun rp(block: Res.drawable.() -> DrawableResource): Painter =
     painterResource(Res.drawable.block())

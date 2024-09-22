@@ -1,0 +1,291 @@
+{
+  "abilities": [//definice abilit ve hre, skilly standardne critical nemaji, da se zapnout pouze pasivkou
+    {
+      "level": 1,//level od ketereho se da skill pouzit
+      //na koho lze abilitu pouzit, self=sam hrac, enemy=nepritel "pole je to protoze muze byt nejaky special ni skill, ktery funguje na oba (napriklad kdyz se pouzije na nepritele tak to da dmg, ale kdyz se to pouzije na hrace, tak to udela heal)"
+      //pokud je trigger threshold, tak muze byt targets pouze self nebo enemy nikoliv oboji
+      "targets": ["self", "enemy"],
+      "id": "ability_id",//slouzi zaroven jako klic k translaci, + jako concat(id, "_desc") slouzi k popisu ability (desc neni povinny)
+      "utilization": ["battle","story"],
+      "reserve": 5, //kolikrat za {reserveMode} lze skill pouzit
+      "reserveMode": "story|battle|fight", //urcuje jakym stylem bude pouziti dovednosti spotrebovano Story = "reserve" neni nikdy vyresetovano (pokud neni udalost ktera jej muze vyresetovat), Battle = "reserve" je vyresetovano hned po bitve, Fight = "reserve" je vyresetovano hned po boji
+      "config": [
+        {
+          "damageType": "physique|fire|wind|blood|...",
+          "baseValue": 5,//zakladni hodnota utoku, zvetsuje se pomoci abilityPower
+          "algorithm": "standard|heal|summon|...specialities like |twice_attack|stun|reflect|leech....",//algoritmus, kterym se ma skill provest
+          "summon": { //v pripade, ze je abilita summoning, tak jake ma summon mit nastaveni, napriklad, v zombie apokaalypse napriklad privolat psa, povolat krysy z kanalu, atp....
+            "attributes": {//base values summona, celkove hodnoty se vypocitaji dle urovne hrace
+              "health": 120,
+              "luck": 2,
+              "defense": 15,
+              "skill": 4,
+              "attack": 4,
+              "speed": 1,
+              "abilityPower": 1
+            },
+            "attributesPerLevel": {
+              //attributes object
+            },
+            "abilities":["ability_name"], //(zvazit, jestli sumoni vubec mohou ability pouzivat) seznam dovednosti, summon ma nektere dovednosti zakazane, jako napriklad vyvolani summona
+            "blockMode":"manual|never|ever" //urcuje jestli summon muze blokovat dmg, kterou bude hrac dostavat nebo ne, v pripade zvoleni blokovat utok obdrzi veskere zraneni, debuffy, conditiony atp summon misto hrace, tuto moznost muze hrac vyuzivat dokud summon nezemre
+            //manual = blokaci provadi sam hrac (muze si vybrat) jestli chce aby summon dmg vyblokoval nebo ne
+            //never = summon nikdy nebude blokovat dmg
+            //ever = summon bude vzdy blokovat dmg, dokud nezemre
+
+          },
+          //kdy je mozne skill pouzit (battle=pouze v bitve, story=pouze v sekci), default je pouze battle
+          "attribute": "health|skill|abilityPower|etc...",
+          "duration": 5, //jak dlouho bude skill trvat (v pripade, hot|dot), 0=okamzite, 1=kolo, 2=2 kola, atd.
+          "multiplication":0.5 //multiplikuje vyslednout silu ability, napriklad, kdyz je abilita, ktera ma davat burst damage, bude mit multiplikaci 2.5, kdyz to je dotka tak 0.3 atp....default value =1
+        }
+      ],
+      "trigger":"manual|threshold", //manual=tuto abilitu musi vzdy pouzit postava, threshold=tato abilita se spusti sama v pripade ze bude dosazeno thresholdu, neda se pouzit manualne
+      "threshold": {//jen pokud je trigger=threshold
+        "attribute":"health|....",
+        "value": "%"//procentualni vyjadreni aktualni hodnoty, naprikald 0.5....ci-li abilita se sama spusti, pokud zdravi bude <=50%
+      }
+    }
+  ],
+  "passives": [//definice pasivnich dovednosti ve hre
+    {
+      "id": "passive_2",
+      "require": "passive_1", //pokud existuje, tak hrac musi nejprv mit tuto pasivku aby se mohl naucit tuto pasivku,
+      "stack":"true|false",//true=levely se scitaji, cili pokud prida level 1=5%zdravi, 2=10%zdravi, 3=15%zdravi, tak tato pasivka prida celkem 30%, pokud stack=false, tak se prida pocet zdravi podle levelu
+      "algorithm": "standard|leech|reflect|criticalAbilities|boostSummon|improvedCritical",
+      "levels":[//pasivka muze mit vice levelu a kazdym levelem je silnejsi, je povinne
+        {
+          "skillPoints": 5,//kolik stoji SP na nauceni
+          //standard=navysi postave attribut dle nastaveni,
+          //leech=pri kazdem hracove utoku vrati aktualni attribut dle nastaveni (napriklad 2% z maximalniho zdravi),
+          //reflect=po kazde kdyz hrac obdrzi zraneni vrati urcite % nepriteli dle nastaveni (muze tedy i snizovat attack nepriteli nebo zdravi)
+          //criticalAbilities=skilly mohou davat criticaly
+          //improvedCritical = zvysuje critical dmg o hodnotu (power.value=mela by byt treba jen 0.2 atp (navysi jak brutal tak i critical, ci-li kdyz hodnota bude 0.2, tak critical = 1.7 a brutal=2.2)), algoritmus ignoruje parametr power.absolute
+          "attribute": "health|...",
+          "power": {
+            "value":5,
+            "absolute":"true|false"//stejne jako u predmetu
+          }
+        }
+      ]
+    }
+  ],
+  "characters": [//definice postav ve hre
+    {
+      "startSection": 1,//sekce ve ktere postava zacina
+      "id": "character_id",//slouzi zaroven jako klic k translaci, + jako concat(id, "_desc") slouzi k popisu postavy
+      "attributesPerLevel": {//urcuje kolik postava dostane statu za kazdy dosazeny level
+        "health": 1,
+        "defense": 1,
+        "skill": 1,
+        "luck": 1,
+        "attack": 1,
+        "speed": 1,
+        "abilityPower": 1
+      },
+      "attributes": {
+        //main stats
+        "skill": 4,//sance na kritical, ktery cini 1.5x dmg
+        "luck": 2,//v sekci: (viz sekce) v boji: pokud je hit kriticky a hrac ma stesti, tak je hit 2x misto 1.5x
+        //align stats
+        "health": 120,//klasika, pokud klesne pod 0 postava zemre
+        "defense": 15,//redukce vysledne dmg
+        "attack": 4,//sila normalniho utoku
+        "speed": 1,//urcuje, kdo zacina v kazdem kole jako prvni a ma primy vliv na evasion
+        "abilityPower": 1 //urcuje silu schopnosti
+      },
+      "passives": [//seznam pasivnich dovednosti, ktere se postava muze naucit
+        "passive_1"
+      ],
+      "abilities": [//seznam abilitit, ktere se postava muze naucit
+        "skill_id_10"
+      ],
+      "items": ["item_1"] //seznam predmetu, kterymi je hrac vybaven na zacatku vypravy
+    }
+  ],
+  "enemies": [//definice nepratel ve hre
+    {
+      "id": "enemy_id",//slouzi zaroven jako klic k translaci, + jako concat(id, "_desc") slouzi k popisu nepritele (desc neni povinny)
+      "type": "boss",//typ, slouzi pro zobrazeni indikatoru ve hre (informace pro hrace aby cekal, ze nepritel bude tezsi nebo slabsi)
+      "baseExp": 20,//zakladni pocet zkusenosti, ktere hrac za zabiti dostane
+      "attributesPerLevel": {//urcuje kolik nepritel dostane statu za kazdy level (level nepritele se definuje v sekci)
+        "health": 1,
+        "defense": 1,
+        "skill": 1,
+        "luck": 1,
+        "attack": 1,
+        "speed": 1,
+        "abilityPower": 1
+      },
+      "attributes": {//statistiky nepritele
+        "health": 120,
+        "defense": 15,
+        "skill": 4,
+        "luck": 2,
+        "attack": 4,
+        "speed": 1,
+        "abilityPower": 1
+      },
+      "abilities":["ability_1"], //seznam dovednosti, ktere mohou nepratele pouzit (obvykle nepratele nebudou mit zadne, tj. budou utocit pouze pouze main attackem),
+      "items":[{//seznam predmetu, ktere nepritel drzi
+        "item":"item_1",
+        "dropRate":"0-1", //sance, ze hrac tento predment obdrzi v pripade porazeni nepritele (pokud neni vyplneno, tak je hodnota 0 "nelze dropnout"),
+        "usable": "true|false", //urcuje jestli nepritel dany predmet,
+      }]
+    }
+  ],
+  "items":[ //definice predmetu
+    {
+      "id": "item_id",//slouzi zaroven jako klic k translaci, + jako concat(id, "_desc") slouzi k popisu predmetu (desc neni povinny)
+      "algorithm": "consumable|equip|insignia", // urcuje chovani predmetu (equip=obleka se na postavu, consumable=postava muze predmet pouzit, insignia=neintaractivni predmet, slouzi vylozene jenom pro zobrazovani options v sekci (zde mohou byt napriklad klice, ci marka, ze se hrac pridal k frakci))
+      //object settings je definovan podle algoritmu
+      "consumableSetting": { //pouziva se pouze pokud je item consumable
+        "duration": 0, //pokud je 0, tak se predmet pouzije pouze jednorazove (napriklad lekarnicka na heal), pokud je >0, tak se jedna o "condition"
+        "base":"true|false",//stejne pouziti jako condition v sekci, plati i kdyz je consumable jednorazovy nebo conditional, v pripade jednorazoveho "potion" dojde, k permanentnimu navyseni zakladni hodnoty (nebude se chovat jako condition)
+        "mode":"buff|clean|purge|reset|skillPoint|xpBoost",//heal=navysi hodnotu attributu dle parametru base, clean=sunda vsechny negativni conditions, ktere lze vylecit, purge=sunda uplne vsechny conditions a to za jakychkoliv okolnosti, reset=vyresetuje zvolenou abilitu (opet pouze v pripade, ze je abilita reserveMode=story)
+        "value": 0
+      },
+      "equipSetting": {
+        "slot": "head|hand|chest|foot|ring|necklace", //v pripade algo=equip znaci do jakeho slotu muze byt predmet zasunut ci-li bude aktivni,
+        "passiveLevel":{//supluje pasivni dovednost (hrac se ji nemusi umet ani postava je nemusi mit ve vyberu pasivnich schopnosti), nepovinne, lze kombinovat s attributem
+          "passive":"passive_id",
+          "level":0 //pokud neexistuje bere se level maximalni
+        }
+      },
+      "insigniaSetting": {
+        "mode": "key|xbBoost|mark",
+        "value": 0
+      },
+      "resistances": [
+        {
+          "type": "fire|wind|...",
+          "value": "0-1"//percentage
+        }
+      ],
+      "attributes": [
+        {
+          "type": "health",
+          "value": 20,//je cislo o kolik se dany attribut zvedne k base value
+          "absolute": true //kdyz je hodnota true, tak se attribut navysi absolutne, kdyz je false tak se hodnota navysi procentualne o max hodnotu, v pripade, ze je absolute=true je hodnota cele cislo, v pripade absolute=false je hodnota decimaln
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {//sekce
+
+      "text": "text_id!required",//standardni text sekce
+      "luckAvoidText": "text_id!optional",//text, ktery se zobrazipokud se hrac vynul boji (luckDefeatEnemies=false)
+      "luckWinText": "text_id!optional",//text, ktery se zobrazi misto boje, pokud ma hrac stesti jinak bude bojovat (luckDefeatEnemies=true)
+      "battleWinText": "text_id!optional",//text ktery se zobrazi, pokud hrac porazil nepratele
+      "battleLooseText": "text_id!optional",//text ktery se zobrazi, pokud byl hrac porazen v boji
+      "visitedWithEnemiesText": "text_id!optional",//text ktery se zobrazi, pokud hrac sekci jiz navstivil al jsou v sekci porad nepratele (nastane pokud hrac projde sekci a vyhne se boji "luckDefeatEnemies=false" )
+      "visitedText": "text_id!optional",//text ktery se zobrazi, pokud hrac sekci jiz navstivil
+
+
+      "position": 1,
+      "level": 0, //prozatim urcuje level nepratel, pokud neni explicitne nastaven na nepriteli, pokud neexistuje, tak je level nepritele roven levelu hrace
+      "scoreMultiplier": 0.35,//multiplikator score lze nastavit pouze na ukoncovaci sekci a multiplikuje skore naslednym vzorcem (score+score*multiplier)
+      "endSection": "win|loose",//pokud parametr existuje, tak sekce ukoncuje hru, typ urcuje jestli se jedna o vyhru nebo o prohru
+      "luckEnabled": "true|false",//urcuje, jestli je v sekci povoleny luck na okamzite porazeni nepratel
+      "luckDefeatEnemies": "true|false",//pokud je v sekci zapnuty luck, tak jestli luck znici vsechny nepratele nebo se jim hrac vyhne (proste kdyz je false, tak pri navratu hrace do teto sekce s nimi bude bojovat znovu nebo znovu procne luck, kdyz je true tak se povazuje nepratele za kompletne porazeny)
+      "resetPositiveConditions": "true|false",//v pripade, ze ma hrac na sobe pozitivni condition, tak o nej pri vstupu prijde (pouze pokud je condition cleanable=true)
+      "resetNegativeConditions": "true|false",//v pripade, ze ma hrac na sobe negativni condition, tak o nej pri vstupu prijde (pouze pokud je condition cleanable=true)
+      "purgeConditions": "true|false",//v pripade, ze ma hrac na sobe jakekoliv conditions stejna funkce jako consumable["mode"] = purge
+      "resetAbilities":"true|false", //default=false, pri vstupu do sekce, vyresetuje ability (uzitecne pouze pokud ma hrac nejakou ability ktera je usagesType=story)
+      "events":[
+        {
+          "type": "condition|skillPoint|experience|removeItem|addItem",
+
+          //object settings je definovan podle typu (v source codu je to pak konkretni object (to aby to bylo citelnejsi a lepsi k pochopeni))
+          "conditionSetting": {//condition
+            "duration":"-1 az x", //-1 = navzdy, 0 = jen po dobu bitvy (resp, pri vstupu do sekce bonus obdrzi a po bitve zase zmizi), 1+ na x dalsich sekci, defaultne je 0
+            "afterBattle": "true|false",//stejne jako u predmetu s tim, ze pokud je duration 0, tak je tento attribut ignorovan a bonus je aplikovan pred bitvou
+            "base":"true|false", // v pripade true je bonus aplikovan na zakladni attribut (dojde tak k navyseni maximalni hodnoty), v pripade false dojde k navyseni aktualni hodnoty (nemuze prekrocit max), pokud je base=false, tak je duration ignorovana (jedna se v podstate o heal)
+            "attribute":"health|atd...",//v pripade algorithm=attribute se jedna o manipulaci s attributem postavy
+            "cleanable":"true|false",//pokud je true lze tuto condition "vylecit" jinak je vyzadovan force nebo purge consumable item
+            "value":5
+          },
+          "skillPointSetting": {//experience
+            "afterBattle": "true|false",
+            "value": 20 //zakladni pocet zkusenosti, ktere hrac dostane, pri vstupu do sekce
+          },
+          "experienceSetting": {//skillpoint
+            "afterBattle": "true|false",
+            "value": 20, //zakladni pocet zkusenosti, ktere hrac dostane, pri vstupu do sekce
+            "multiplier": 0.5 //multiplikator s levelme hrace, tj. za kazdy level tj(x=basexp, y=multiplier, l=playerLevel| xp=x+y*l*x), ci-li hrac na 20levelu obdrzi 220 expu, hrac na levelu 1 obdrzi 20 expu
+          },
+          "removeItemSetting": {//destroy_item, znici hraci equipable item dle slotu
+            "algorithm": "consumable|...",
+            "slot":"head|...",//jen pokud je algo=equip
+            "itemId": "",//specificke id itemu, pokud je vyplneni, tak se parameter "algorithm" ignoruje
+            "afterBattle": "true|false",
+            "dressed":"true|false"//true=znici pouze obleceny item, false=znici jakykoliv item, prioritne ten obleceny
+          },
+          "addItemSetting": {
+            "item":"item_id",
+            "afterBattle":"true|false"//urcuje kdy hrac predment dostane, pripade ze v sekci neni bitvy, je tento parametr ignorovan, v pripade bitvy dostane hrac predment podle paramtru (true, po bitve, false pred bitvou) defautlne je hodnota true
+          }
+        }
+      ],
+      "enemies": [
+        {
+          "enemy": "zombie",
+          "level": 0 //pokud neni stanoveno nebo je <=0, tak se bere parameter level ze sekce pokud existuje, jinak se bere level hrace
+        }
+      ],
+      "options": [
+        {
+          "id": 1,//slouzi pouze ke spravnemu ukladat hry aby bylo mozne spravne priradit stav optionu pri nacitani hry
+          "section": 0,//sekce na kterou moznost odkazuje
+          "text": "text_id", //text moznosti
+          "attribute": {//pokud je vyplneno, tak se moznost zobrazi pouze pokud hrac splnuje nasledujici staty
+            "baseOnly":"true|false",//pokud je true, tak hrac musi splnit base value, jinak se pocita jeho aktualni hodnota (ta muze byt modifikovana, itemy, pasivkama, bonusama, atd.)
+            "attribute":"health",
+            "value":5
+          },
+          "characters":["character_id"], //tato moznost se zobrazi pouze konkretnimu characteru
+          "ability": "ability_name",//pokud hrac ma tuto abilitu, muze pouzit tuto moznost v pokracovani pribehu
+          "disableWhenSelected": "true|false",//pokud hrac jiz navstivil sekci a tuto moznost jiz vybral, tak bude blokovana (nebo se vubec nezobrazi)
+          "luckAspect": "true|false",//tato moznost se zobrazi pouze pokud procne luck,
+          "item": { //pokud ma hrac v inventari tento predmet muze tuto moznost pouzit
+            "item": "item_id",
+            "destroy": "true|false"//default true, po pouziti predmet odstrani
+          }
+        }
+      ]
+    }
+  ],
+
+  "defaults": {
+    "damageType": ["Physique", "Wind", "..."],//jake resistance se budou zobrazovat hracovi na obrazovce jeho postavy (defaultne vsechny)
+    "theme": "horror", //jaky tema se ma pouzit pri hrani pribehu "horror|action|scifi|fantasy" -> zatim nefunkcni (nice feature), kdyz neni definovany bere se zakladni theme
+    "ui": {
+      "inventory":"true|false"//hra (ne)zobrazuje inventar
+    },
+    "levelingSetting": {//this is default can be omitted
+      "xp": 10,//pocet expu za kazdy level
+      "multiplication": 1.5 //nasobitel o kolik sa parameter "xp" zvedne o kazdy level (aby to nebylo staticky, ci-li aby se nestalo ze na kazdy dalsi level je potreba 10xp)
+      "spPerLevel": 1,//kolik skill pointu je za 1 level
+    },
+    "luckBattleWinReduction": "0-1", // pokud je v sekci boj a lze se ho pomoci stesti vyhrat, tak urcuje o kolik budou zredukovany zkusenosti, ktere by hrac dotal z normalniho boje
+    "luckBattleAvoidReduction": "0-1", // pokud je v sekci boj a lze se mu vyhnout pomoci stesti, tak urcuje o kolik budou zredukovany zkusenosti, ktere by hrac dotal z normalniho boje
+    "attributes": {//configurace pro vypocet % z atributu
+      "increment": {//o kolik se zvedne base hodnota za kazdy level postavy (pouze pro vypocet % nikoliv o kolik se zvysi hracovi) to kvuli balancingu, cim vetsi hodnota, tim se bude vic redukovat s kazdym levelem
+        "defense": 2,
+        "skill": 3,
+        "luck": 1,
+        "speed": 10
+      },
+      "max": {//pokud je attribute vyjadrovan procentuelne, tak kolik je jeho maxilamni mozna hodnota cili clamp(55, 35) = 35
+        "armor": 0.35, //redukce dmg max 35% => base attr = defense
+        "criticalChance": 0.35,//maximalni sance na kritikal je 35% => base attr = skill
+        "brutalChance": 0.35, //mmaximalni sance na 2x critical je 35% => base_attr = luck,
+        "evasion": 0.55 //maximalni sance na vyhnuti se utoku je 55% base attr = speed
+      },
+      "mode": "normal|hardcore" // urcuje mod pribehu (nevybira si hrac je to pevne dane pribehem), tento parameter ma prozatim vliv pouze na to kdy se hraci obnovi zdravi (normal=po kazde bitve se zdravi hrace vrati na jeho maximalni hodnotu), hardcore=zdravi hrace se nikdy samo neresotuje, to se muze stat pouze hracovou interakci s predmety (lekarnicka), dovednostmi, ci bonusama v sekci
+    },
+    "deadIsNewBeginning":"true|false" //zatim neni implementovano (experimental), ale mohlo by fungovat nejak takto:
+    //v pripade smrti, muze hrac hrat uplne znovu (cely pribeh bude resetovan, vcetne skore) ovsem s tim, ze muze narazit na svou "mrtvolu" a vzit z ni predmety
+  }
+}

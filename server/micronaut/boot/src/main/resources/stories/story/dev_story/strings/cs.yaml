@@ -1,4 +1,12 @@
-section_0: První sekce
-section_1: Druhá sekce
 character_1: Charakter 1
 character_2: Charakter 2
+
+section_0_text: Popis sekce 0
+section_0_visited_text: Sekce 0 byla jiz navstivena
+section_0_option_0_text: Do sekce 1
+
+section_1_text: Popis sekce 1
+section_1_option_0_text: Do sekce 2
+
+section_2_text: Popis sekce 2
+section_2_option_0_text: Do sekce 0

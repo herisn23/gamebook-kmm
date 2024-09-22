@@ -28,7 +28,7 @@ import gamebook.gameapp.generated.resources.loading
 import io.ktor.utils.io.errors.IOException
 import core.remember.lazyRemember
 import compose.router.ScreenTransition
-import t
+import rt
 
 
 enum class LoaderViewState {
@@ -50,8 +50,8 @@ fun <T> Loader(
     modifier: Modifier = defaultLoadingBoxModifier,
     errorMessage: @Composable (Throwable) -> String = {
         when (it) {
-            is IOException -> t { error_message_internetConnection }
-            else -> t { error_message_generic }
+            is IOException -> rt { error_message_internetConnection }
+            else -> rt { error_message_generic }
         }
     },
     customLoadingView: (@Composable BoxScope.(String) -> Unit)? = null,
@@ -82,7 +82,7 @@ fun <T> Loader(
             when (state) {
                 LoaderViewState.Loading -> {
                     Box(modifier) {
-                        val text = loadingText ?: t { loading }
+                        val text = loadingText ?: rt { loading }
                         customLoadingView?.let {
                             with(this) {
                                 it(text)
@@ -117,7 +117,7 @@ fun <T> Loader(
                                     },
                                     modifier = Modifier.align(Alignment.CenterHorizontally)
                                 ) {
-                                    Text(errorButtonText ?: t { error_confirm })
+                                    Text(errorButtonText ?: rt { error_confirm })
                                 }
                             }
                         }
