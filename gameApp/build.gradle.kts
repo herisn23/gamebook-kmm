@@ -129,7 +129,6 @@ android {
 
 compose.resources {
     publicResClass = true
-//    packageOfResClass = "me.sample.library.resources"
     generateResClass = always
 }
 buildkonfig {
@@ -138,9 +137,8 @@ buildkonfig {
     val apiUrlPropertyName = "API_URL"
     val httpLoggingEnabled = "HTTP_LOGGING_ENABLED"
 
-    val apiUrlAndroidSimDev: String by project
-    val apiUrlIosSimDev: String by project
-
+    val apiUrlLocalhostAndroid: String by project
+    val apiUrlLocalhost: String by project
     val apiUrlStage: String by project
     val apiUrlRelease: String by project
 
@@ -148,9 +146,9 @@ buildkonfig {
         buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlRelease)
         buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabled, "false")
     }
-
     defaultConfigs("dev") {
         buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabled, "true")
+        buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlLocalhost)
     }
 
     defaultConfigs("stage") {
@@ -159,10 +157,11 @@ buildkonfig {
     }
     targetConfigs("dev") {
         create("android") {
-            buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlAndroidSimDev)
+            buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlLocalhostAndroid)
         }
-        create("ios") {
-            buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlIosSimDev)
+        create("iosSim") {
+            buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlLocalhost)
         }
     }
+
 }

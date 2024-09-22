@@ -14,8 +14,8 @@ dev_story:
   supportedLanguages: [ "cs" ]
   baseTexts:
     startGameText:
-      cs: Test
-      en: Test
+      cs: Go!
+      en: Go!
     name:
       cs: Dev story
       en: Dev story

@@ -1,5 +1,6 @@
 package engine
 
+import androidx.compose.ui.text.intl.Locale
 import cz.roldy.gb.story.localization.Genus
 import cz.roldy.gb.story.localization.IStoryLocalizedContext
 import cz.roldy.gb.story.localization.StringProvider
@@ -18,6 +19,10 @@ class StoryEngine(
     fun t(block: StringProvider): String =
         block.translate(this)
 }
+
+
+fun Story.pickLanguage() =
+    pickLanguage(Locale.current.language)
 
 fun Story.pickLanguage(selected: String) =
     when (supportedLanguages.contains(selected)) {

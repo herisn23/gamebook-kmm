@@ -4,17 +4,16 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import component.image.MainBackgroundImage
+import compose.component.image.MainBackgroundImage
 import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import screen.story.StoriesRouter
+import compose.router.StoriesRouter
 
 
 @Composable
 @Preview
 fun App() {
-
     Napier.base(DebugAntilog())
     MaterialTheme(
         colorScheme = defaultColors,

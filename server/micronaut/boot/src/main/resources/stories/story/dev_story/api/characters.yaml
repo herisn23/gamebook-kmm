@@ -2,3 +2,5 @@ characters:
   #character1
   - id: character_1
     startSection: 0
+  - id: character_2
+    startSection: 1
