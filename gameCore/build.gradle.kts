@@ -1,39 +1,37 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
-//    if(project.hasProperty("editor"))
+
+    androidTarget {
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
+    }
+
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        moduleName = "editorApp"
-        browser {
-            val projectDirPath = project.projectDir.path
-            commonWebpackConfig {
-                outputFileName = "editorApp.js"
-                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    port = 3001
-                    static = (static ?: mutableListOf()).apply {
-                        // Serve sources to debug inside browser
-                        add(projectDirPath)
-                    }
-                }
-            }
-        }
-        binaries.executable()
+        moduleName = "gameCore"
+        browser()
     }
+
+    iosArm64()
+    iosSimulatorArm64()
 
     sourceSets {
         commonMain.dependencies {
             implementation(projects.shared)
-            implementation(projects.gameCore)
-
+            implementation(projects.gameHttpClient)
 
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -53,11 +51,24 @@ kotlin {
             implementation(libs.ktor.plugins.negotiation.json)
             implementation(libs.ktor.plugins.logging)
         }
+    }
 
-        wasmJsMain.dependencies {
-            implementation(libs.ktor.client.js)
-        }
+}
+
+android {
+    namespace = "cz.roldy.gb.gameCore"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    defaultConfig {
+        minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }
 
+compose.resources {
+    publicResClass = true
+    generateResClass = always
+}
 

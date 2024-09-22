@@ -24,6 +24,18 @@ micronaut:
       mixed: true
     locale-resolution:
       default-locale: cs
+    cors:
+      enabled: true
+      configurations:
+        all:
+          allowed-origins:
+            - http://localhost:3001
+            - http://localhost:3000
+#      configurations:
+#        ui:
+#          allowed-origins: *
+#          allowed-methods: *
+#          allowed-headers: *
   serde:
     serialization:
       inclusion: non_null

@@ -39,6 +39,8 @@ dependencyResolutionManagement {
 
 include(":shared")
 
+include(":gameHttpClient")
+include(":gameCore")
 include(":gameApp")
 include(":editorApp")
 

@@ -58,10 +58,11 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-            implementation(libs.ktor.client.okhttp)
         }
         commonMain.dependencies {
             implementation(projects.shared)
+            implementation(projects.gameCore)
+            implementation(projects.gameHttpClient)
 
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -80,12 +81,6 @@ kotlin {
             implementation(libs.ktor.plugins.negotiation)
             implementation(libs.ktor.plugins.negotiation.json)
             implementation(libs.ktor.plugins.logging)
-        }
-        iosMain.dependencies {
-            implementation(libs.ktor.client.ios)
-        }
-        wasmJsMain.dependencies {
-            implementation(libs.ktor.client.js)
         }
     }
 }
@@ -131,41 +126,18 @@ compose.resources {
     publicResClass = true
     generateResClass = always
 }
+
 buildkonfig {
     packageName = "cz.roldy.gb.config"
-
-    val apiUrlPropertyName = "API_URL"
-    val httpLoggingEnabledPropName = "HTTP_LOGGING_ENABLED"
     val storyDevModePropName = "STORY_DEV_MODE"
-
-    val apiUrlLocalhostAndroid: String by project
-    val apiUrlLocalhost: String by project
-    val apiUrlStage: String by project
-    val apiUrlRelease: String by project
     val storyDevMode: String by project
 
     defaultConfigs {
-        buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlRelease)
-        buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabledPropName, "false")
         buildConfigField(FieldSpec.Type.BOOLEAN, storyDevModePropName, "false")
     }
-    defaultConfigs("dev") {
-        buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabledPropName, "true")
-        buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlLocalhost)
-        buildConfigField(FieldSpec.Type.BOOLEAN, storyDevModePropName, storyDevMode)
-    }
 
-    defaultConfigs("stage") {
-        buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlStage)
-        buildConfigField(FieldSpec.Type.BOOLEAN, httpLoggingEnabledPropName, "true")
-    }
-    targetConfigs("dev") {
-        create("android") {
-            buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlLocalhostAndroid)
-        }
-        create("iosSim") {
-            buildConfigField(FieldSpec.Type.STRING, apiUrlPropertyName, apiUrlLocalhost)
-        }
+    defaultConfigs("dev") {
+        buildConfigField(FieldSpec.Type.BOOLEAN, storyDevModePropName, storyDevMode)
     }
 
 }
