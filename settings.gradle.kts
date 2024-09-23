@@ -39,11 +39,10 @@ dependencyResolutionManagement {
 
 include(":shared")
 
-include(":gameHttpClient")
-include(":gameCore")
-include(":gameApp")
-include(":editorApp")
-
+include(":client:editor:composeApp")
+include(":client:game:composeApp")
+include(":client:lib:core")
+include(":client:lib:httpClient")
 
 include(":server")
 include(":server:flyway")
