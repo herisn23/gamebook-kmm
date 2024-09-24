@@ -1,6 +1,6 @@
 rootProject.name = "gamebook"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
+includeBuild("gradlePlugin")
 pluginManagement {
     repositories {
         google {
@@ -45,6 +45,7 @@ include(":client:lib:core")
 include(":client:lib:httpClient")
 
 include(":server")
+include(":server:native")
 include(":server:flyway")
 include(":server:micronaut")
 include(":server:micronaut:boot")

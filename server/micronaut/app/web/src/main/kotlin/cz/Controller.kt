@@ -6,8 +6,8 @@ import io.micronaut.http.annotation.Get
 @Controller
 class HelloController {
 
-    @Get("/hovno")
+    @Get("/")
     fun index(): String {
-        return "Hello World"
+        return "Hello World Micronaut!"
     }
 }

@@ -1,9 +1,9 @@
 [versions]
-agp = "8.6.0"
+agp = "8.6.1"
 android-compileSdk = "35"
 android-minSdk = "34"
 android-targetSdk = "35"
-androidx-activityCompose = "1.9.1"
+androidx-activityCompose = "1.9.2"
 androidx-appcompat = "1.7.0"
 androidx-constraintlayout = "2.1.4"
 androidx-core = "1.13.1"
@@ -15,20 +15,20 @@ compose-plugin = "1.6.11"
 junit = "4.13.2"
 kotlin = "2.0.20"
 aakira-napier = "2.7.1"
-kotlinx-serialization-json = "1.7.1"
-kotlin-serialization = "2.0.0"
+kotlinx-serialization = "1.7.3"
 kaml = "0.61.0"
 jetbrains-navigation = "2.7.0-alpha07"
 kmm-resources = "1.0.0-alpha10"
 jetbrains-markdown = "0.7.3"
 markdown-renderer = "0.25.0"
-ktor = "3.0.0-wasm2"
+ktor = "3.0.0-rc-1" #release candidate is neccessary for wasm
 buildKonfig = "0.15.1"
-uiGraphicsDesktop = "1.6.8"
+uiGraphicsDesktop = "1.7.0"
 #server versions
 
 
 [libraries]
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -41,18 +41,25 @@ androidx-material = { group = "com.google.android.material", name = "material", 
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 aakira-napier = { group = "io.github.aakira", name = "napier", version.ref = "aakira-napier" }
-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-yaml = { module = "com.charleskorn.kaml:kaml", version.ref = "kaml" }
 jetbrains-navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "jetbrains-navigation" }
 jetbrains-markdown = { module = "org.jetbrains:markdown", version.ref = "jetbrains-markdown" }
 markdown-renderer = { module = "com.mikepenz:multiplatform-markdown-renderer-m3", version.ref = "markdown-renderer" }
+
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-client-ios = { module = "io.ktor:ktor-client-ios", version.ref = "ktor" }
 ktor-client-js = { module = "io.ktor:ktor-client-js", version.ref = "ktor" }
-ktor-plugins-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
-ktor-plugins-resources = { module = "io.ktor:ktor-client-resources", version.ref = "ktor" }
-ktor-plugins-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-server-core = { module = "io.ktor:ktor-server-cio", version.ref = "ktor" }
+ktor-server-cio = { module = "io.ktor:ktor-server-cio", version.ref = "ktor" }
+
+
+ktor-plugins-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-plugins-client-resources = { module = "io.ktor:ktor-client-resources", version.ref = "ktor" }
+ktor-plugins-client-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-plugins-server-negotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
 ktor-plugins-negotiation-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-plugins-headers = { module = "io.ktor:ktor-server-default-headers" }
 #ktor-plugins-cors = {module="io.ktor:ktor-server-cors", version.ref="cors"}
@@ -67,6 +74,6 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-serialization" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
 #server plugins

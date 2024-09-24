@@ -1,3 +1,4 @@
+import gradle.nativeTarget
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -6,10 +7,11 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinSerialization)
+    id("native-target")
 }
 
 kotlin {
-
+    applyDefaultHierarchyTemplate()
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
@@ -23,9 +25,11 @@ kotlin {
         browser()
     }
 
+    nativeTarget()
     iosX64()
     iosArm64()
     iosSimulatorArm64()
+
 
     jvm()
 
@@ -33,8 +37,8 @@ kotlin {
         commonMain.dependencies {
             // put your Multiplatform dependencies here
             implementation(libs.kotlinx.serialization.json)
-            implementation(libs.kotlinx.serialization.yaml)
         }
+
     }
 }
 

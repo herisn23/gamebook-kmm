@@ -47,10 +47,10 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.ktor.client.core)
-            implementation(libs.ktor.plugins.resources)
-            implementation(libs.ktor.plugins.negotiation)
+            implementation(libs.ktor.plugins.client.resources)
+            implementation(libs.ktor.plugins.client.negotiation)
             implementation(libs.ktor.plugins.negotiation.json)
-            implementation(libs.ktor.plugins.logging)
+            implementation(libs.ktor.plugins.client.logging)
         }
 
         wasmJsMain.dependencies {
